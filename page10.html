@@ -1364,3 +1364,362 @@
           <div class="viz-bar"></div>
           <div class="viz-bar"></div>
           <div class="viz-bar"></div>
+          <div class="viz-bar"></div>
+          <div class="viz-bar"></div>
+        </div>
+        
+        <!-- Contenedor del reproductor mejorado -->
+        <div class="player-wrap">
+          <div class="loading-spinner" id="loadingSpinner"></div>
+          <iframe id="playerFrame" src="https://www.youtube.com/embed/C0OXsyR2mMM?enablejsapi=1&controls=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          
+          <!-- Cubiertas para ocultar título y logo mejoradas -->
+          <div class="cover-title" aria-hidden="true"></div>
+          <div class="cover-logo" aria-hidden="true"></div>
+        </div>
+        
+        <!-- Barra de progreso mejorada -->
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="duration">4:12</span>
+          </div>
+        </div>
+        
+        <!-- Controles mejorados (solo play/pause y volumen) -->
+        <div class="controls">
+          <button class="btn primary pulse-animation" id="play" title="Reproducir">
+            <i class="fas fa-play"></i> <span>Reproducir</span>
+          </button>
+          <button class="btn" id="pause" title="Pausar">
+            <i class="fas fa-pause"></i> <span>Pausar</span>
+          </button>
+          <div class="volume-control">
+            <span class="volume-icon" id="volumeIcon">
+              <i class="fas fa-volume-up"></i>
+            </span>
+            <input id="volume" class="slider" type="range" min="0" max="100" value="75" aria-label="Control de volumen" />
+          </div>
+        </div>
+        
+        <!-- Letras de la canción mejoradas -->
+        <div class="lyrics-container" id="lyricsContainer">
+          <div class="lyrics-header">
+            <div class="lyrics-title" id="lyricsTitle">Letra de la canción</div>
+            <button class="btn" id="closeLyrics" title="Cerrar letras">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="lyrics-content" id="lyricsContent">
+            Eres lo primero en lo que pienso en las mañanas<br>
+            Eres con quien quiero despertar entre las sabanas<br>
+            Eres mi deseo de 11:11<br>
+            Eres con quien quiero estar febrero catorce<br>
+            Tú<br>
+            Tú<br>
+            Lo intentamos si tu quieres, puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            Lo intentamos si tu quieres, puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            <br>
+            Eres mis canciones preferidas<br>
+            Tienes que ser tú, solo tú<br>
+            Eres lo mejor que podría pasarle a mi vida<br>
+            Perfecta melodía<br>
+            Tú<br>
+            Tú<br>
+            Lo intentamos si tu quieres<br>
+            Puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            Lo intentamos si tu quieres<br>
+            Puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pie de página mejorado con más detalles -->
+    <footer>
+      <div class="nav-container">
+        <a href="index.html" class="btn">Página Principal</a>
+      </div>
+      <div class="page-info">Canción única - Momento especial</div>
+    </footer>
+  </div>
+  
+  <!-- Botón de acción flotante mejorado -->
+  <button class="fab" id="fabButton" title="Mostrar/Ocultar letras">
+    <i class="fas fa-music"></i>
+  </button>
+  
+  <!-- Contenedor para notificaciones mejorado -->
+  <div class="toast" id="toast">
+    <i class="fas fa-heart"></i>
+    <span id="toastMessage">¡Disfruta de este mensaje especial hecho canción! ❤️</span>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const iframe = document.getElementById('playerFrame');
+      const playBtn = document.getElementById('play');
+      const pauseBtn = document.getElementById('pause');
+      const volumeSlider = document.getElementById('volume');
+      const volumeIcon = document.getElementById('volumeIcon');
+      const progressBar = document.getElementById('progressBar');
+      const progressFill = document.getElementById('progressFill');
+      const currentTimeEl = document.getElementById('currentTime');
+      const durationEl = document.getElementById('duration');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      const currentTitleEl = document.getElementById('currentTitle');
+      const currentSubtitleEl = document.getElementById('currentSubtitle');
+      const lyricsContainer = document.getElementById('lyricsContainer');
+      const lyricsTitleEl = document.getElementById('lyricsTitle');
+      const lyricsContentEl = document.getElementById('lyricsContent');
+      const closeLyricsBtn = document.getElementById('closeLyrics');
+      const fabButton = document.getElementById('fabButton');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const vizBars = document.querySelectorAll('.viz-bar');
+      
+      let isPlaying = false;
+      let playbackTime = 0;
+      let duration = 252; // Duración en segundos (4:12)
+      let lastVolume = 75;
+      let isMuted = false;
+      let audioVisualizerInterval;
+      
+      function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+      }
+      
+      function updateProgress() {
+        if (duration > 0) {
+          const progressPercent = (playbackTime / duration) * 100;
+          progressFill.style.width = `${progressPercent}%`;
+          currentTimeEl.textContent = formatTime(playbackTime);
+          durationEl.textContent = formatTime(duration);
+        }
+      }
+      
+      function updateAudioVisualizer() {
+        vizBars.forEach(bar => {
+          const height = Math.floor(Math.random() * 100) + 1;
+          bar.style.height = `${isPlaying ? height : 10}%`;
+        });
+      }
+      
+      function showToast(message, duration = 3000) {
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, duration);
+      }
+      
+      function createSparkle(x, y) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+        sparkle.style.width = `${Math.random() * 8 + 2}px`;
+        sparkle.style.height = sparkle.style.width;
+        sparkle.style.background = `rgba(255, 215, 0, ${Math.random() * 0.5 + 0.3})`;
+        document.body.appendChild(sparkle);
+        
+        const animation = sparkle.animate([
+          { opacity: 0.8, transform: 'translate(0, 0) scale(0)' },
+          { opacity: 0, transform: `translate(${(Math.random() - 0.5) * 40}px, ${-30 - Math.random() * 20}px) scale(1)` }
+        ], {
+          duration: 800 + Math.random() * 400,
+          easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+        });
+        
+        animation.onfinish = () => sparkle.remove();
+      }
+      
+      function postCommand(command, args = []) {
+        try {
+          iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: command,
+            args: args
+          }), '*');
+          
+          if (command === 'playVideo') {
+            playBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => playBtn.style.transform = '', 150);
+          } else if (command === 'pauseVideo') {
+            pauseBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => pauseBtn.style.transform = '', 150);
+          }
+        } catch (error) {
+          console.error('Error enviando comando a YouTube:', error);
+          showToast('⚠️ Error de reproducción. Intenta recargar la página.', 3500);
+        }
+      }
+      
+      function simulatePlayback() {
+        if (isPlaying) {
+          playbackTime = Math.min(playbackTime + 1, duration);
+          updateProgress();
+          
+          if (Math.random() > 0.7) {
+            updateAudioVisualizer();
+          }
+        }
+      }
+      
+      playBtn.addEventListener('click', (e) => {
+        createSparkle(e.clientX, e.clientY);
+        postCommand('playVideo');
+        isPlaying = true;
+        showToast('▶️ Música en reproducción', 1500);
+      });
+      
+      pauseBtn.addEventListener('click', (e) => {
+        createSparkle(e.clientX, e.clientY);
+        postCommand('pauseVideo');
+        isPlaying = false;
+        showToast('⏸️ Música en pausa', 1500);
+      });
+      
+      volumeSlider.addEventListener('input', (e) => {
+        const volume = parseInt(e.target.value);
+        postCommand('setVolume', [volume]);
+        lastVolume = volume;
+        
+        if (volume === 0) {
+          volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
+          volumeIcon.classList.add('active');
+          isMuted = true;
+        } else if (volume < 30) {
+          volumeIcon.innerHTML = '<i class="fas fa-volume-down"></i>';
+          volumeIcon.classList.remove('active');
+        } else {
+          volumeIcon.innerHTML = '<i class="fas fa-volume-up"></i>';
+          volumeIcon.classList.remove('active');
+        }
+      });
+      
+      volumeIcon.addEventListener('click', () => {
+        if (isMuted) {
+          volumeSlider.value = lastVolume || 75;
+          postCommand('setVolume', [lastVolume || 75]);
+          volumeIcon.innerHTML = lastVolume < 30 ? 
+            '<i class="fas fa-volume-down"></i>' : 
+            '<i class="fas fa-volume-up"></i>';
+          isMuted = false;
+          showToast(`🔊 Volumen restaurado: ${lastVolume}%`, 1500);
+        } else {
+          lastVolume = parseInt(volumeSlider.value);
+          volumeSlider.value = 0;
+          postCommand('setVolume', [0]);
+          volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
+          volumeIcon.classList.add('active');
+          isMuted = true;
+          showToast('🔇 Volumen silenciado', 1500);
+        }
+      });
+      
+      let isDragging = false;
+      progressBar.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        updateProgressBar(e);
+      });
+      
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          updateProgressBar(e);
+        }
+      });
+      
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+      
+      function updateProgressBar(e) {
+        if (!isDragging) return;
+        const rect = progressBar.getBoundingClientRect();
+        const clickPosition = e.clientX - rect.left;
+        const percent = Math.max(0, Math.min(1, clickPosition / rect.width));
+        playbackTime = percent * duration;
+        updateProgress();
+        
+        if (!document.getElementById('progress-tooltip')) {
+          const tooltip = document.createElement('div');
+          tooltip.id = 'progress-tooltip';
+          tooltip.style.position = 'absolute';
+          tooltip.style.top = `${rect.top - 40}px`;
+          tooltip.style.left = `${e.clientX - 25}px`;
+          tooltip.style.background = 'rgba(0, 0, 0, 0.8)';
+          tooltip.style.color = 'white';
+          tooltip.style.padding = '4px 8px';
+          tooltip.style.borderRadius = '12px';
+          tooltip.style.fontSize = '12px';
+          tooltip.style.zIndex = '1000';
+          tooltip.textContent = formatTime(playbackTime);
+          document.body.appendChild(tooltip);
+          setTimeout(() => {
+            tooltip.remove();
+          }, 1000);
+        }
+      }
+      
+      closeLyricsBtn.addEventListener('click', (e) => {
+        createSparkle(e.clientX, e.clientY);
+        lyricsContainer.classList.remove('show');
+        showToast('📖 Letras ocultas', 1200);
+      });
+      
+      fabButton.addEventListener('click', (e) => {
+        createSparkle(e.clientX, e.clientY);
+        if (lyricsContainer.classList.contains('show')) {
+          lyricsContainer.classList.remove('show');
+          showToast('💫 Letras ocultas', 1200);
+        } else {
+          lyricsContainer.classList.add('show');
+          showToast('✨ Mostrando letras', 1200);
+        }
+      });
+      
+      // Inicializar
+      updateAudioVisualizer();
+      volumeSlider.value = 75;
+      postCommand('setVolume', [75]);
+      setInterval(simulatePlayback, 1000);
+      
+      // Mensaje de consola
+      console.log('%c❤️ REPRODUCTOR ROMÁNTICO PERSONALIZADO ❤️', 'color: #ff4d8d; font-size: 26px; font-weight: bold; text-shadow: 0 0 10px rgba(255, 77, 141, 0.7);');
+      console.log('%c✨ Canción especial: "Mensaje sobre nosotros"', 'color: #ffc86a; font-size: 16px; font-weight: 500;');
+      console.log('');
+      console.log('%c🌟 Instrucciones de uso:', 'color: #88d0e0; font-weight: bold; text-decoration: underline;');
+      console.log('- Presiona el botón "Reproducir" para comenzar');
+      console.log('- Usa el botón "Pausar" para detener la música');
+      console.log('- Ajusta el volumen con el control deslizante');
+      console.log('- Presiona el botón flotante (♫) para ver las letras');
+      console.log('');
+      console.log('%c💖 Este reproductor fue creado con mucho amor para ti', 'color: #ff4d8d; font-weight: bold; background: rgba(30, 10, 40, 0.7); padding: 8px; border-radius: 8px;');
+      
+      // Mostrar notificación inicial
+      setTimeout(() => {
+        showToast('✨ ¡Bienvenido! Disfruta de este mensaje especial hecho canción ❤️', 4000);
+      }, 1000);
+      
+      // Efecto de animación en el título principal
+      setTimeout(() => {
+        document.querySelector('h1').style.animation = 'glow 3s ease-in-out infinite alternate, breathe 8s infinite';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
