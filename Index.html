@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 1</title>
+    <script src="audio-manager.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffebee 0%, #f8bbd0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle, #ff80ab, #ff4081);
+            border-radius: 50%;
+            animation: fall 15s linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 25px 50px -12px rgba(255, 100, 150, 0.3);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ff9800;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: all 0.5s ease;
+        }
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+            box-shadow: 0 30px 60px -15px rgba(255, 100, 150, 0.4);
+        }
+        .header {
+            background: linear-gradient(to right, #ff9ebd 0%, #ffccbc 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid rgba(255, 100, 150, 0.2);
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: spin 15s linear infinite;
+        }
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            animation: spin 20s linear infinite reverse;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1 {
+            font-size: 3.8rem;
+            color: #d81b60;
+            margin-bottom: 15px;
+            position: relative;
+            text-shadow: 0 4px 8px rgba(216, 27, 96, 0.2);
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ff4081, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 64, 129, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(233, 30, 99, 0.8); }
+        }
+        .subtitle {
+            font-size: 1.4rem;
+            color: #ff80ab;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            position: relative;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        .content {
+            padding: 50px 40px;
+            position: relative;
+        }
+        .letter {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: justify;
+            line-height: 1.8;
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #ff9800;
+        }
+        .letter p {
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            color: #333;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+        }
+        .letter p:hover {
+            transform: translateX(5px);
+            color: #d81b60;
+        }
+        .page-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0;
+            justify-content: center;
+            animation: fadeIn 1s ease;
+        }
+        .page-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(to right, #ff9800, #f57c00);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .page-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.5);
+            background: linear-gradient(to right, #f57c00, #ff9800);
+        }
+        .page-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: all 0.5s;
+        }
+        .page-btn:hover::after {
+            left: 100%;
+        }
+        .footer {
+            background: linear-gradient(to right, #d81b60, #c2185b);
+            color: #fff;
+            padding: 25px 40px;
+            text-align: center;
+            font-size: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: #d81b60;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .current-date {
+            display: block;
+            font-size: 1.1rem;
+            color: #ffeb3b;
+            margin-top: 10px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            .letter {
+                font-size: 1.2rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals-container" id="petals-container"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Una carta llena de amor para ti</p>
+        </div>
+        
+        <div class="content">
+            <div class="letter">
+                <p>Lissy,</p>
+                <p>Cuando pienso en el primer momento en que supe que eras diferente, no me refiero al primer recuerdo, sino a ese instante en el que realmente me detuve y entendí que algo en ti no era como en los demás. Fue aquel día en que Jen —que en ese entonces era mi mejor amiga— me presentó contigo. Yo estaba desinteresado, sin ganas de conocer a nadie, con la mente en mil cosas que no valían la pena… y aun así, ahí estabas tú.</p>
+                <p>Ese día tuve la opción de decir "no, quiero estar solo". Pude haberme quedado en mi mundo, cerrado, sin permitir que alguien más entrara. Pero Jen insistió, y gracias a eso te conocí. Y desde ese momento, sin que tú lo supieras, decidí quedarme a tu lado.</p>
+                <p>Me impresionó la forma en que ves la vida. Aun cuando te sientes mal, aun cuando hay días feos, siempre encuentras algo bueno. Siempre apareces con una seguridad en tus decisiones que yo admiro demasiado. Eso es lo que te representa para mí: esa fortaleza tranquila, esa manera de caminar hacia adelante aunque el mundo se sienta pesado.</p>
+                <p>También me llamaron la atención tus gustos, esas cositas que para mí eran extrañas, quizás por cultura… pero que poco a poco fui entendiendo y hasta disfrutando, simplemente porque venían de ti.</p>
+                <p>Creo que lo que más me marcó fue que, sin que hicieras nada extraordinario, lograste que yo viera de nuevo lo bonito de la vida. Tú fuiste ese punto donde todo podía volverse más ligero. Y en ese primer encuentro, aunque no lo supieras, algo en mí dijo:</p>
+                <p style="text-align: center; margin: 30px 0; font-size: 1.4rem; color: #d81b60; font-weight: 700;">"Quédate. Ella vale la pena."</p>
+            </div>
+            
+            <div class="page-navigation">
+                <a href="page2.html" class="page-btn">Página 2</a>
+                <a href="page3.html" class="page-btn">Página 3</a>
+                <a href="page4.html" class="page-btn">Página 4</a>
+                <a href="page5.html" class="page-btn">Página 5</a>
+                <a href="page6.html" class="page-btn">Página 6</a>
+                <a href="page7.html" class="page-btn">Página 7</a>
+                <a href="page8.html" class="page-btn">Página 8</a>
+                <a href="page9.html" class="page-btn">Página 9</a>
+                <a href="page10.html" class="page-btn">Página 10</a>
+            </div>
+            
+            <div class="signature">
+                Siempre tuyo,
+                <span style="display: block; margin-top: 15px;">GRETO</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Carta escrita con amor por GRETO para Lissy el <span class="current-date" id="current-date"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Create falling sakura petals
+        document.addEventListener('DOMContentLoaded', function() {
+            const petalsContainer = document.getElementById('petals-container');
+            const petalCount = 25; // Reduced from 50 to 25 for less intensity
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                const size = 8 + Math.random() * 7;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                
+                petal.style.left = `${Math.random() * 100}%`;
+                
+                const duration = 15 + Math.random() * 10;
+                petal.style.animationDuration = `${duration}s`;
+                
+                petal.style.animationDelay = `${Math.random() * 5}s`;
+                
+                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                petal.style.opacity = 0.7;
+                
+                petalsContainer.appendChild(petal);
+            }
+            
+            const now = new Date(2025, 10, 26);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('es-ES', options);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 5</title>
+    <script src="audio-manager.js"></script>
+    <style>
+        :root {
+            --primary: #8bc34a;
+            --secondary: #c8e6c9;
+            --accent: #ffeb3b;
+            --text: #333333;
+            --wood: #795548;
+            --wood-dark: #5d4037;
+            --shadow: rgba(121, 85, 72, 0.2);
+            --border: rgba(121, 85, 72, 0.1);
+            --light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #c8e6c9 0%, #e8f5e9 100%);
+            min-height: 100vh;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        .garden-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .flower {
+            position: absolute;
+            border-radius: 50%;
+            animation: sway 4s infinite alternate;
+            opacity: 0.8;
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(0deg) translateX(0); }
+            50% { transform: rotate(5deg) translateX(10px); }
+            100% { transform: rotate(0deg) translateX(0); }
+        }
+
+        .flower1 {
+            width: 20px;
+            height: 20px;
+            left: 15%;
+            top: 20%;
+            background: radial-gradient(circle, #ffeb3b, #ffc107);
+            animation-delay: 0s;
+        }
+
+        .flower2 {
+            width: 15px;
+            height: 15px;
+            left: 25%;
+            top: 30%;
+            background: radial-gradient(circle, #ff80ab, #ff4081);
+            animation-delay: 0.5s;
+        }
+
+        .flower3 {
+            width: 25px;
+            height: 25px;
+            left: 35%;
+            top: 15%;
+            background: radial-gradient(circle, #4caf50, #2e7d32);
+            animation-delay: 1s;
+        }
+
+        .flower4 {
+            width: 18px;
+            height: 18px;
+            left: 45%;
+            top: 25%;
+            background: radial-gradient(circle, #ff5722, #e64a19);
+            animation-delay: 1.5s;
+        }
+
+        .flower5 {
+            width: 22px;
+            height: 22px;
+            left: 55%;
+            top: 35%;
+            background: radial-gradient(circle, #9c27b0, #7b1fa2);
+            animation-delay: 2s;
+        }
+
+        .flower6 {
+            width: 16px;
+            height: 16px;
+            left: 65%;
+            top: 20%;
+            background: radial-gradient(circle, #00bcd4, #0097a7);
+            animation-delay: 2.5s;
+        }
+
+        .flower7 {
+            width: 24px;
+            height: 24px;
+            left: 75%;
+            top: 30%;
+            background: radial-gradient(circle, #ff9800, #f57c00);
+            animation-delay: 3s;
+        }
+
+        .flower8 {
+            width: 14px;
+            height: 14px;
+            left: 85%;
+            top: 15%;
+            background: radial-gradient(circle, #607d8b, #455a64);
+            animation-delay: 3.5s;
+        }
+
+        .petal {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-15px) translateX(5px); }
+            100% { transform: translateY(0) translateX(10px); }
+        }
+
+        .petal1 {
+            width: 8px;
+            height: 8px;
+            left: 10%;
+            top: 40%;
+            animation-delay: 0s;
+        }
+
+        .petal2 {
+            width: 6px;
+            height: 6px;
+            left: 20%;
+            top: 50%;
+            animation-delay: 0.5s;
+        }
+
+        .petal3 {
+            width: 10px;
+            height: 10px;
+            left: 30%;
+            top: 60%;
+            animation-delay: 1s;
+        }
+
+        .petal4 {
+            width: 7px;
+            height: 7px;
+            left: 40%;
+            top: 70%;
+            animation-delay: 1.5s;
+        }
+
+        .petal5 {
+            width: 9px;
+            height: 9px;
+            left: 50%;
+            top: 80%;
+            animation-delay: 2s;
+        }
+
+        .petal6 {
+            width: 5px;
+            height: 5px;
+            left: 60%;
+            top: 90%;
+            animation-delay: 2.5s;
+        }
+
+        .petal7 {
+            width: 11px;
+            height: 11px;
+            left: 70%;
+            top: 100%;
+            animation-delay: 3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.3s ease;
+            background: rgba(245, 245, 245, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(121, 85, 72, 0.2);
+            border: 2px solid var(--wood);
+            backdrop-filter: blur(10px);
+            border-image: linear-gradient(to right, var(--wood), var(--wood-dark), var(--wood)) 1;
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(136, 199, 74, 0.1);
+            box-shadow: 0 4px 15px rgba(136, 199, 74, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--wood);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--wood);
+            text-shadow: 0 2px 4px rgba(121, 85, 72, 0.2);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #795548, #5d4037);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(121, 85, 72, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(93, 64, 55, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--wood);
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-style: italic;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(245, 245, 245, 0.8);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(121, 85, 72, 0.05);
+            border: 1px solid var(--wood);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23795548" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.05;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter p::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .letter p:hover {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(136, 199, 74, 0.1), rgba(121, 85, 72, 0.1));
+            border-left: 5px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-weight: 500;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(136, 199, 74, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%238bc34a" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(136, 199, 74, 0.15);
+        }
+
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: var(--wood);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--wood);
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: linear-gradient(to right, #795548, #5d4037);
+            color: #f5f5f5;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+            min-width: 120px;
+            box-shadow: 0 4px 10px rgba(121, 85, 72, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(to right, #5d4037, #795548);
+        }
+
+        .page-info {
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .letter {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .letter {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="garden-container" id="garden-container"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Página 5: Los pequeños detalles</p>
+        </div>
+        
+        <div class="letter">
+            <p>Lo que me gusta de ti no es solo una cosa… son muchas. Son esos pequeños detalles que tal vez tú no notas, pero que para mí hacen toda la diferencia. Me gusta la manera en la que hablas, con esa mezcla de dulzura y seguridad. Me gusta cómo te expresas, cómo dices las cosas sin necesidad de exagerar, cómo mantienes tu esencia sin importar lo que pase.</p>
+            
+            <p>Me gusta tu forma de pensar, esa combinación tan bonita entre lógica y sentimiento. Esa manera tuya de ver el mundo con una perspectiva única, que a veces me sorprende, a veces me hace reflexionar, y muchas veces me hace admirarte aún más.</p>
+            
+            <div class="highlight">
+                <p>Me gusta cómo eres auténtica. Cómo no pretendes ser alguien más. Cómo te muestras tal cual eres, con tus luces y tus sombras, con tus aciertos y tus dudas. Esa autenticidad tuya vale oro, porque hoy en día casi nadie se atreve a ser real… y tú sí. Tú lo eres sin esforzarte, sin buscar atención, sin querer demostrar nada.</p>
+            </div>
+            
+            <p>Me gusta que tienes una sensibilidad especial, esa que se nota incluso cuando intentas ocultarla. Esa que hace que cuides, que sientas, que te importe. Esa sensibilidad tuya es una de las cosas más bonitas que tienes.</p>
+            
+            <p>Y también me gusta tu fortaleza, aunque tú a veces no la veas. Esa fuerza que aparece en los momentos duros. Esa capacidad tuya de seguir adelante incluso cuando la vida pesa un poco más. Esa mezcla de fuerza y ternura es una de las cosas que más me atrae de ti.</p>
+            
+            <p>Me gusta cómo haces que lo simple se sienta único. Cómo una conversación contigo puede cambiarlo todo. Cómo tu presencia tiene el poder de dejar una marca suave pero inolvidable.</p>
+            
+            <p>Recuerdo una vez que estábamos en un café, y mientras tú hablabas, noté cómo jugabas con la cucharita en tu taza, dibujando patrones en la espuma. Ese pequeño gesto, tan simple, me hizo sonreír. En ese momento supe que lo que más valoro de ti es tu autenticidad: cómo te muestras tal cual eres, sin máscaras ni pretensiones.</p>
+            
+            <p>Me gusta cómo escuchas. No solo con los oídos, sino con el corazón. Cómo tus ojos se iluminan cuando alguien habla, cómo te preocupas por entender más que por responder. Esa atención plena que das a cada persona que te habla es algo que pocos tienen y que yo admiro profundamente.</p>
+            
+            <p>Y en los momentos difíciles, cuando el mundo parece caerse, tú tienes esa manera de encontrar la luz en la oscuridad. No es una luz brillante, sino una luz cálida y suave, como una vela en una habitación oscura. Esa luz es la que me guía cuando me siento perdido.</p>
+            
+            <div class="highlight">
+                <p>Lo que más admiro de ti es que eres una persona que puede ser fuerte y tierna al mismo tiempo. Que puede ser segura y vulnerable. Que puede ser real y mágica. Esa combinación única es lo que hace que cada día contigo sea especial. Eres como un jardín en el que siempre hay algo nuevo que descubrir, algo pequeño pero precioso.</p>
+            </div>
+        </div>
+        
+        <div class="signature">
+            Siempre tuyo,<br>
+            GRETO
+        </div>
+        
+        <div class="footer">
+            <div class="nav-container">
+                <a href="page4.html" class="nav-btn">Página Anterior</a>
+                <a href="page6.html" class="nav-btn">Siguiente Página</a>
+            </div>
+            <div class="page-info">Página 5 de 10</div>
+        </div>
+    </div>
+
+    <script>
+        // Create garden elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const gardenContainer = document.getElementById('garden-container');
+            
+            // Create flowers
+            const flowerCount = 8;
+            for (let i = 1; i <= flowerCount; i++) {
+                const flower = document.createElement('div');
+                flower.className = `flower flower${i}`;
+                gardenContainer.appendChild(flower);
+            }
+            
+            // Create petals
+            const petalCount = 7;
+            for (let i = 1; i <= petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = `petal petal${i}`;
+                gardenContainer.appendChild(petal);
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 7</title>
+    <script src="audio-manager.js"></script>
+    <style>
+        :root {
+            --discord-purple: #7289da;
+            --discord-dark: #36393f;
+            --discord-darker: #2f3136;
+            --text: #e0e0e0;
+            --glow: rgba(114, 137, 218, 0.4);
+            --border: rgba(114, 137, 218, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2a 100%);
+            min-height: 100vh;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        .chat-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--glow), transparent);
+            animation: float 12s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+            50% { transform: translateY(-30px) translateX(15px); opacity: 0.9; }
+            100% { transform: translateY(0) translateX(30px); opacity: 0.6; }
+        }
+
+        .bubble1 {
+            width: 25px;
+            height: 25px;
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .bubble2 {
+            width: 20px;
+            height: 20px;
+            left: 25%;
+            top: 35%;
+            animation-delay: 1s;
+        }
+
+        .bubble3 {
+            width: 30px;
+            height: 30px;
+            left: 40%;
+            top: 15%;
+            animation-delay: 2s;
+        }
+
+        .bubble4 {
+            width: 18px;
+            height: 18px;
+            left: 55%;
+            top: 40%;
+            animation-delay: 3s;
+        }
+
+        .bubble5 {
+            width: 22px;
+            height: 22px;
+            left: 70%;
+            top: 25%;
+            animation-delay: 4s;
+        }
+
+        .bubble6 {
+            width: 16px;
+            height: 16px;
+            left: 85%;
+            top: 50%;
+            animation-delay: 5s;
+        }
+
+        .bubble7 {
+            width: 24px;
+            height: 24px;
+            left: 15%;
+            top: 60%;
+            animation-delay: 6s;
+        }
+
+        .bubble8 {
+            width: 14px;
+            height: 14px;
+            left: 30%;
+            top: 75%;
+            animation-delay: 7s;
+        }
+
+        .bubble9 {
+            width: 28px;
+            height: 28px;
+            left: 45%;
+            top: 85%;
+            animation-delay: 8s;
+        }
+
+        .bubble10 {
+            width: 20px;
+            height: 20px;
+            left: 60%;
+            top: 65%;
+            animation-delay: 9s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.3s ease;
+            background: rgba(42, 42, 55, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(114, 137, 218, 0.2);
+            border: 2px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--discord-purple), #5a6fbd);
+            box-shadow: 0 4px 15px rgba(114, 137, 218, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(114, 137, 218, 0.3);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #7289da, #5a6fbd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(114, 137, 218, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(114, 137, 218, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #a0a7b5;
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-style: italic;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(30, 30, 40, 0.8);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%237289da" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.05;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter p::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--discord-purple);
+            font-weight: bold;
+        }
+
+        .letter p:hover {
+            transform: translateX(5px);
+            color: #a0a7b5;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(114, 137, 218, 0.1), rgba(114, 137, 218, 0.1));
+            border-left: 5px solid var(--discord-purple);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-weight: 500;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(114, 137, 218, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%237289da" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(114, 137, 218, 0.15);
+        }
+
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: var(--discord-purple);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #a0a7b5;
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: linear-gradient(to right, #7289da, #5a6fbd);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+            min-width: 120px;
+            box-shadow: 0 4px 10px rgba(114, 137, 218, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(to right, #5a6fbd, #7289da);
+        }
+
+        .page-info {
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .letter {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .letter {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <div class="bubble bubble1"></div>
+        <div class="bubble bubble2"></div>
+        <div class="bubble bubble3"></div>
+        <div class="bubble bubble4"></div>
+        <div class="bubble bubble5"></div>
+        <div class="bubble bubble6"></div>
+        <div class="bubble bubble7"></div>
+        <div class="bubble bubble8"></div>
+        <div class="bubble bubble9"></div>
+        <div class="bubble bubble10"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Página 7: Nuestro Paraíso Digital</p>
+        </div>
+        
+        <div class="letter">
+            <p>A veces pienso que si alguien nos mirara desde afuera, no entendería por qué una simple llamada significa tanto para nosotros. Pero es que para mí nuestras llamadas no son simples. Son nuestro espacio, nuestro propio lugar en el mundo, ese pequeño paraíso donde no importa nada más que tú y yo hablando como siempre.</p>
+            
+            <p>Cada vez que estamos en Discord, siento que el tiempo se detiene un poco. No importa si estamos contando anécdotas, diciendo tonterías, riendo hasta que nos duele el estómago, o simplemente quedándonos en silencio… contigo todo se siente diferente. Más ligero. Más real. Más humano.</p>
+            
+            <div class="highlight">
+                <p>Estar contigo ahí, aunque sea a través de una pantalla, se siente como estar sentado en un lugar donde todo es tranquilo, donde mi mente deja de correr y mi corazón deja de preocuparse. Y eso no lo logro con cualquiera. Te juro que en ese espacio, en esas horas que pasan sin darnos cuenta, siento que estoy exactamente donde tengo que estar.</p>
+            </div>
+            
+            <p>A veces me sorprende lo bien que nos entendemos incluso sin hablar. Cuando tú te quedas callada y yo también, no hay incomodidad. No hay prisa. Solo un silencio bonito, uno que solo se construye cuando dos personas se sienten seguras la una con la otra.</p>
+            
+            <p>Quizá por eso ese lugar —ese pequeño mundo que formamos cuando estamos en llamada— se volvió tan nuestro. Es un sitio donde no existen las personas que nos lastimaron, donde no existe la prisa del día, donde no existe la distancia que separa nuestros cuerpos. Ahí, solo existe la compañía. Tu compañía, que siempre siento como un refugio.</p>
+            
+            <div class="highlight">
+                <p>Por eso digo que es un paraíso. No por lo que hacemos, sino por lo que sentimos. Porque contigo no tengo que forzar nada, no tengo que pretender ser alguien más. Simplemente soy yo, y tú eres tú, y eso basta para que todo se sienta bien.</p>
+            </div>
+            
+            <p>Y aunque no estemos físicamente juntos, cada vez que entro a esa llamada contigo, siento que vuelvo a casa.<br>
+            Siento que vuelvo a ese rincón que solo tú y yo conocemos.<br>
+            Ese lugar que, sin darnos cuenta, se volvió completamente nuestro.</p>
+            
+            <p>Recuerdo una noche en particular cuando estábamos hablando de cosas triviales, pero cada palabra tenía un significado especial. Esa sensación de familiaridad, de comodidad, de pertenencia. Es como si en ese espacio digital, nuestra conexión se volviera tangible. No necesitamos palabras para entendernos, solo necesitamos estar ahí, juntos en ese rincón que es nuestro.</p>
+            
+            <p>En ese lugar, no hay presión. No hay expectativas. Solo la libertad de ser nosotros mismos, sin máscaras ni pretensiones. Es un refugio donde puedo respirar, donde puedo ser vulnerable, donde puedo simplemente existir contigo.</p>
+            
+            <p>Gracias por crear ese espacio conmigo. Gracias por hacer que cada llamada sea un viaje a nuestro paraíso. Gracias por ser mi hogar, incluso a través de una pantalla.</p>
+        </div>
+        
+        <div class="signature">
+            Siempre tuyo,<br>
+            GRETO
+        </div>
+        
+        <div class="footer">
+            <div class="nav-container">
+                <a href="page6.html" class="nav-btn">Página Anterior</a>
+                <a href="page8.html" class="nav-btn">Siguiente Página</a>
+            </div>
+            <div class="page-info">Página 7 de 10</div>
+        </div>
+    </div>
+</body>
+</html>
+

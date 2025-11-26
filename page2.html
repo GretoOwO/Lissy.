@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 2</title>
+    <script src="audio-manager.js"></script>
+    <style>
+        :root {
+            --star-color1: #ffffff;
+            --star-color2: #e6e6e6;
+            --star-color3: #cccccc;
+            --star-color4: #b3b3b3;
+            --star-color5: #999999;
+            --star-color6: #808080;
+            --star-color7: #666666;
+            --star-color8: #4d4d4d;
+            --star-color9: #333333;
+            --star-color10: #1a1a1a;
+            --moon-color: #f0f0f0;
+            --moon-glow: rgba(240, 240, 240, 0.5);
+            --bg-dark: #0a0a1a;
+            --bg-dark2: #050510;
+            --text-color: #e0e0e0;
+            --accent-color: #ff9800;
+            --accent-color2: #ff5722;
+            --accent-color3: #2196f3;
+            --accent-color4: #4caf50;
+            --accent-color5: #9c27b0;
+            --accent-color6: #ffeb3b;
+            --accent-color7: #ff5722;
+            --accent-color8: #00bcd4;
+            --accent-color9: #e91e63;
+            --accent-color10: #3f51b5;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --shadow-color2: rgba(0, 0, 0, 0.5);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-color2: rgba(255, 255, 255, 0.2);
+            --border-color3: rgba(255, 255, 255, 0.3);
+            --border-color4: rgba(255, 255, 255, 0.4);
+            --border-color5: rgba(255, 255, 255, 0.5);
+            --button-bg: #ff9800;
+            --button-bg-hover: #ff5722;
+            --button-bg-active: #e64a19;
+            --progress-bar-bg: rgba(255, 255, 255, 0.2);
+            --progress-bar-fill: #ff9800;
+            --wave-color: #ff9800;
+            --wave-color2: #2196f3;
+            --wave-color3: #e91e63;
+            --wave-color4: #4caf50;
+            --wave-color5: #9c27b0;
+            --wave-color6: #ffeb3b;
+            --wave-color7: #00bcd4;
+            --wave-color8: #ff5722;
+            --wave-color9: #3f51b5;
+            --wave-color10: #cddc39;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.25);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 24px;
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-extra: 0.8s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-dark2));
+            min-height: 100vh;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            position: relative;
+            perspective: 1000px;
+            padding-bottom: 50px;
+        }
+
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--star-color1);
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes twinkle1 { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.8; } }
+        @keyframes twinkle2 { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.9; } }
+        @keyframes twinkle3 { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.85; } }
+        @keyframes twinkle4 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+        @keyframes twinkle5 { 0%, 100% { opacity: 0.18; } 50% { opacity: 0.88; } }
+        @keyframes twinkle6 { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.92; } }
+        @keyframes twinkle7 { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.82; } }
+        @keyframes twinkle8 { 0%, 100% { opacity: 0.28; } 50% { opacity: 0.98; } }
+        @keyframes twinkle9 { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.84; } }
+        @keyframes twinkle10 { 0%, 100% { opacity: 0.26; } 50% { opacity: 0.96; } }
+        @keyframes twinkle11 { 0%, 100% { opacity: 0.16; } 50% { opacity: 0.86; } }
+        @keyframes twinkle12 { 0%, 100% { opacity: 0.24; } 50% { opacity: 0.94; } }
+        @keyframes twinkle13 { 0%, 100% { opacity: 0.19; } 50% { opacity: 0.89; } }
+        @keyframes twinkle14 { 0%, 100% { opacity: 0.27; } 50% { opacity: 0.97; } }
+        @keyframes twinkle15 { 0%, 100% { opacity: 0.17; } 50% { opacity: 0.87; } }
+        @keyframes twinkle16 { 0%, 100% { opacity: 0.23; } 50% { opacity: 0.93; } }
+        @keyframes twinkle17 { 0%, 100% { opacity: 0.13; } 50% { opacity: 0.83; } }
+        @keyframes twinkle18 { 0%, 100% { opacity: 0.29; } 50% { opacity: 0.99; } }
+        @keyframes twinkle19 { 0%, 100% { opacity: 0.11; } 50% { opacity: 0.81; } }
+        @keyframes twinkle20 { 0%, 100% { opacity: 0.21; } 50% { opacity: 0.91; } }
+        @keyframes twinkle21 { 0%, 100% { opacity: 0.10; } 50% { opacity: 0.80; } }
+        @keyframes twinkle22 { 0%, 100% { opacity: 0.20; } 50% { opacity: 0.90; } }
+        @keyframes twinkle23 { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.85; } }
+        @keyframes twinkle24 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+        @keyframes twinkle25 { 0%, 100% { opacity: 0.18; } 50% { opacity: 0.88; } }
+        @keyframes twinkle26 { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.92; } }
+        @keyframes twinkle27 { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.82; } }
+        @keyframes twinkle28 { 0%, 100% { opacity: 0.28; } 50% { opacity: 0.98; } }
+        @keyframes twinkle29 { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.84; } }
+        @keyframes twinkle30 { 0%, 100% { opacity: 0.26; } 50% { opacity: 0.96; } }
+        @keyframes twinkle31 { 0%, 100% { opacity: 0.16; } 50% { opacity: 0.86; } }
+        @keyframes twinkle32 { 0%, 100% { opacity: 0.24; } 50% { opacity: 0.94; } }
+        @keyframes twinkle33 { 0%, 100% { opacity: 0.19; } 50% { opacity: 0.89; } }
+        @keyframes twinkle34 { 0%, 100% { opacity: 0.27; } 50% { opacity: 0.97; } }
+        @keyframes twinkle35 { 0%, 100% { opacity: 0.17; } 50% { opacity: 0.87; } }
+        @keyframes twinkle36 { 0%, 100% { opacity: 0.23; } 50% { opacity: 0.93; } }
+        @keyframes twinkle37 { 0%, 100% { opacity: 0.13; } 50% { opacity: 0.83; } }
+        @keyframes twinkle38 { 0%, 100% { opacity: 0.29; } 50% { opacity: 0.99; } }
+        @keyframes twinkle39 { 0%, 100% { opacity: 0.11; } 50% { opacity: 0.81; } }
+        @keyframes twinkle40 { 0%, 100% { opacity: 0.21; } 50% { opacity: 0.91; } }
+        @keyframes twinkle41 { 0%, 100% { opacity: 0.10; } 50% { opacity: 0.80; } }
+        @keyframes twinkle42 { 0%, 100% { opacity: 0.20; } 50% { opacity: 0.90; } }
+        @keyframes twinkle43 { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.85; } }
+        @keyframes twinkle44 { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.95; } }
+        @keyframes twinkle45 { 0%, 100% { opacity: 0.18; } 50% { opacity: 0.88; } }
+        @keyframes twinkle46 { 0%, 100% { opacity: 0.22; } 50% { opacity: 0.92; } }
+        @keyframes twinkle47 { 0%, 100% { opacity: 0.12; } 50% { opacity: 0.82; } }
+        @keyframes twinkle48 { 0%, 100% { opacity: 0.28; } 50% { opacity: 0.98; } }
+        @keyframes twinkle49 { 0%, 100% { opacity: 0.14; } 50% { opacity: 0.84; } }
+        @keyframes twinkle50 { 0%, 100% { opacity: 0.26; } 50% { opacity: 0.96; } }
+
+        .moon {
+            position: absolute;
+            top: 50px;
+            right: 100px;
+            width: 150px;
+            height: 150px;
+            background: var(--moon-color);
+            border-radius: 50%;
+            box-shadow: 0 0 80px var(--moon-glow);
+            z-index: 5;
+            animation: moonRotate 120s linear infinite;
+        }
+
+        @keyframes moonRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform var(--transition-medium);
+            min-height: calc(100vh - 100px);
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: var(--border-radius-lg);
+            background: rgba(10, 10, 26, 0.7);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 4s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 152, 0, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(255, 87, 34, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--accent-color3);
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-style: italic;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(10, 10, 26, 0.8);
+            padding: 35px;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color2);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-medium);
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff9800" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.05;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            transition: all var(--transition-medium);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter p::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .letter p:hover {
+            transform: translateX(5px);
+            color: var(--accent-color);
+        }
+
+        .letter p:nth-child(1):hover {
+            color: var(--accent-color3);
+        }
+
+        .letter p:nth-child(2):hover {
+            color: var(--accent-color4);
+        }
+
+        .letter p:nth-child(3):hover {
+            color: var(--accent-color5);
+        }
+
+        .letter p:nth-child(4):hover {
+            color: var(--accent-color6);
+        }
+
+        .letter p:nth-child(5):hover {
+            color: var(--accent-color7);
+        }
+
+        .letter p:nth-child(6):hover {
+            color: var(--accent-color8);
+        }
+
+        .letter p:nth-child(7):hover {
+            color: var(--accent-color9);
+        }
+
+        .letter p:nth-child(8):hover {
+            color: var(--accent-color10);
+        }
+
+        .letter p:nth-child(9):hover {
+            color: var(--accent-color);
+        }
+
+        .letter p:nth-child(10):hover {
+            color: var(--accent-color2);
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(255, 152, 0, 0.1), rgba(255, 87, 34, 0.1));
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-weight: 500;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-medium);
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff9800" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: var(--button-bg);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .nav-btn:hover {
+            background: var(--button-bg-hover);
+        }
+
+        .page-info {
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .letter {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .letter {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="moon"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Página 2: La luz que ilumina mis días</p>
+        </div>
+        
+        <div class="letter">
+            <p>Hay algo en ti que todavía no logro entender del todo… pero lo siento. Lo siento cada vez que hablo contigo, cada vez que leo un mensaje tuyo, cada vez que simplemente pienso en ti. Es como si tu presencia, incluso a la distancia, tuviera la capacidad de levantarme, de animarme, de recordarme que todavía existen personas que iluminan sin pedir nada a cambio.</p>
+            
+            <div class="highlight">
+                <p>Tú tienes eso. Esa luz. Ese "no sé qué" que cambia el ambiente, que hace que todo se sienta un poquito menos pesado y un poquito más bonito.</p>
+            </div>
+            
+            <p>Y quiero que lo sepas: no es algo común. No es algo que uno encuentra todos los días. Es algo especial. Algo tuyo.</p>
+            
+            <p>Hablar contigo me motiva. Me inspira. Me impulsa a ser mejor, a esforzarme más, a querer crecer. Porque cuando una persona llega y te da paz, cuando te da calma, cuando te hace sentir escuchado… uno empieza a valorar cosas que antes pasaba por alto.</p>
+            
+            <p>Tú me haces creer —sin que lo intentes— que las cosas buenas aún existen. Que las conexiones reales todavía pasan.</p>
+            
+            <div class="highlight">
+                <p>A veces, incluso en mis días más difíciles, basta con recordarte para que todo cambie un poco. Me das fuerzas de una forma que no puedo explicar. Es como si tu presencia, tu manera de ser, tu esencia… me dijeran: "Tranquilo, sigue adelante, todo va a estar bien."</p>
+            </div>
+            
+            <p>Y eso vale más de lo que imaginas. Porque no cualquiera tiene el poder de motivar, de inspirar, de dar energía solo con existir. Pero tú sí. Tú lo haces sin darte cuenta. Y por eso te admiro. Por eso te valoro tanto. Porque tienes un corazón que se siente incluso en tus palabras, una bondad que no necesita anuncios, una belleza que va más allá de lo físico.</p>
+            
+            <p>Contigo aprendí que lo especial no siempre grita: a veces susurra. Y tú… tú eres ese susurro bonito que llega, te calma, te impulsa y te recuerda que todavía hay razones para sonreír.</p>
+            
+            <div class="highlight">
+                <p>Nunca cambies esa esencia tuya, porque es única. Y porque, aunque quizás tú no lo notes, estás dejando huellas bonitas en el mundo… y en mí.</p>
+            </div>
+        </div>
+        
+        <div class="signature">
+            Siempre tuyo,<br>
+            GRETO
+        </div>
+        
+        <div class="footer">
+            <div class="nav-container">
+                <a href="index.html" class="nav-btn">Página Anterior</a>
+                <a href="page3.html" class="nav-btn">Siguiente Página</a>
+            </div>
+            <div class="page-info">Página 2 de 10</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars-container');
+            const petalCount = 150;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                const size = 1 + Math.random() * 4;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const duration = 3 + Math.random() * 7;
+                star.style.animationDuration = `${duration}s`;
+                
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                const twinkleNum = Math.floor(Math.random() * 50) + 1;
+                star.style.animationName = `twinkle${twinkleNum}`;
+                
+                const colorNum = Math.floor(Math.random() * 10) + 1;
+                star.style.backgroundColor = `var(--star-color${colorNum})`;
+                
+                star.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            const now = new Date(2025, 10, 26);
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.querySelector('.footer .page-info').textContent = `Página 2 de 10 - ${now.toLocaleDateString('es-ES', options)}`;
+        });
+    </script>
+</body>
+</html>

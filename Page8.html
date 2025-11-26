@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 9</title>
+    <script src="audio-manager.js"></script>
+    <style>
+        :root {
+            --background: #1a1a2e;
+            --sky: #4a4a8e;
+            --light: #e6e6ff;
+            --text: #f0f0ff;
+            --accent: #c9a0dc;
+            --shadow: rgba(201, 160, 220, 0.3);
+            --border: rgba(201, 160, 220, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--background), var(--sky));
+            min-height: 100vh;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        .star-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--light);
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .star1 {
+            width: 2px;
+            height: 2px;
+            left: 10%;
+            top: 15%;
+            animation-delay: 0s;
+        }
+
+        .star2 {
+            width: 3px;
+            height: 3px;
+            left: 25%;
+            top: 20%;
+            animation-delay: 0.5s;
+        }
+
+        .star3 {
+            width: 4px;
+            height: 4px;
+            left: 40%;
+            top: 25%;
+            animation-delay: 1s;
+        }
+
+        .star4 {
+            width: 2px;
+            height: 2px;
+            left: 55%;
+            top: 30%;
+            animation-delay: 1.5s;
+        }
+
+        .star5 {
+            width: 5px;
+            height: 5px;
+            left: 70%;
+            top: 35%;
+            animation-delay: 2s;
+        }
+
+        .star6 {
+            width: 3px;
+            height: 3px;
+            left: 85%;
+            top: 40%;
+            animation-delay: 2.5s;
+        }
+
+        .star7 {
+            width: 4px;
+            height: 4px;
+            left: 15%;
+            top: 45%;
+            animation-delay: 3s;
+        }
+
+        .star8 {
+            width: 2px;
+            height: 2px;
+            left: 30%;
+            top: 50%;
+            animation-delay: 3.5s;
+        }
+
+        .star9 {
+            width: 3px;
+            height: 3px;
+            left: 45%;
+            top: 55%;
+            animation-delay: 4s;
+        }
+
+        .star10 {
+            width: 4px;
+            height: 4px;
+            left: 60%;
+            top: 60%;
+            animation-delay: 4.5s;
+        }
+
+        .star11 {
+            width: 2px;
+            height: 2px;
+            left: 75%;
+            top: 65%;
+            animation-delay: 5s;
+        }
+
+        .star12 {
+            width: 5px;
+            height: 5px;
+            left: 90%;
+            top: 70%;
+            animation-delay: 5.5s;
+        }
+
+        .star13 {
+            width: 3px;
+            height: 3px;
+            left: 5%;
+            top: 75%;
+            animation-delay: 6s;
+        }
+
+        .star14 {
+            width: 4px;
+            height: 4px;
+            left: 20%;
+            top: 80%;
+            animation-delay: 6.5s;
+        }
+
+        .star15 {
+            width: 2px;
+            height: 2px;
+            left: 35%;
+            top: 85%;
+            animation-delay: 7s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.3s ease;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 2px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent), #a085c5);
+            box-shadow: 0 4px 15px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--text);
+            text-shadow: 0 2px 4px rgba(201, 160, 220, 0.3);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #c9a0dc, #a085c5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(201, 160, 220, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(160, 133, 197, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #d4c4e0;
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-style: italic;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(36, 36, 66, 0.8);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(201, 160, 220, 0.1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23c9a0dc" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.05;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter p::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .letter p:hover {
+            transform: translateX(5px);
+            color: #d4c4e0;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(201, 160, 220, 0.1), rgba(160, 133, 197, 0.1));
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-weight: 500;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(201, 160, 220, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23c9a0dc" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(201, 160, 220, 0.15);
+        }
+
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #d4c4e0;
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: linear-gradient(to right, #c9a0dc, #a085c5);
+            color: #f0f0ff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+            min-width: 120px;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(to right, #a085c5, #c9a0dc);
+        }
+
+        .page-info {
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .letter {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .letter {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="star-container" id="star-container">
+        <div class="star star1"></div>
+        <div class="star star2"></div>
+        <div class="star star3"></div>
+        <div class="star star4"></div>
+        <div class="star star5"></div>
+        <div class="star star6"></div>
+        <div class="star star7"></div>
+        <div class="star star8"></div>
+        <div class="star star9"></div>
+        <div class="star star10"></div>
+        <div class="star star11"></div>
+        <div class="star star12"></div>
+        <div class="star star13"></div>
+        <div class="star star14"></div>
+        <div class="star star15"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Página 9: Los Pequeños Toques</p>
+        </div>
+        
+        <div class="letter">
+            <p>Si pudiera elegir un instante para volver a vivirlo, sería uno donde pudiera tocarte, aunque sea un poco. No algo grande, no algo exagerado… solo esos pequeños gestos que, sin darme cuenta, se quedaron grabados en mí.</p>
+            
+            <p>A veces pienso en tu carita, en cómo la tocaría con delicadeza, como si estuviera sosteniendo algo frágil y precioso. Porque para mí tú eres eso: algo que se cuida, que se trata con cariño, que se mira despacio, como si cada detalle tuviera un significado que no puedo poner en palabras. Me encantaría volver a sentir ese contacto, suave, tranquilo, que solo existe cuando dos personas confían de verdad.</p>
+            
+            <div class="highlight">
+                <p>También pienso en tu cabello. En cómo lo tocaría, como si estuviera acomodando un pedacito de cielo entre mis dedos. No sé por qué, pero imaginar ese gesto me llena de calma. Es como si en ese simple movimiento se guardara toda la ternura que nunca dije en voz alta, todo lo que siento y que a veces no sé expresar.</p>
+            </div>
+            
+            <p>La distancia no hace fácil nada de esto. Pero incluso así, tú sigues estando aquí, en mis recuerdos, en mi mente, en esos momentos donde pienso en lo que fuimos, en lo que somos, en lo que todavía podemos ser. A veces me sorprende lo claro que guardo cada pequeña cosa tuya… incluso esas que pensé que olvidaría. Pero tú siempre encuentras la forma de recordármelas, de traerlas de vuelta con tu paciencia, con esa forma tuya de entenderme incluso cuando yo mismo me pierdo.</p>
+            
+            <p>Y ahí es cuando me doy cuenta: elegí quedarme contigo por una razón. Porque contigo todo se siente diferente. Porque tú tienes un arma cargada —mi confianza— y aun así nunca la usas para lastimarme. Porque contigo no tengo miedo, porque en ti encuentro un lugar seguro que no cualquiera puede dar.</p>
+            
+            <p>Recuerdo una vez que estábamos caminando juntos, y tu mano rozó la mía por accidente. No dijimos nada, pero en ese momento sentí como si el mundo se detuviera. Fue tan simple, tan normal, pero para mí fue un momento precioso. Ese pequeño contacto, tan fugaz, se quedó grabado en mi memoria como un tesoro. Me encantaría volver a sentir esa conexión, esa sensación de que en ese instante, todo estaba perfecto.</p>
+            
+            <p>Tu cabello, siempre me ha gustado cómo se mueve, cómo cae sobre tus hombros. Imagino pasar mis dedos entre tus mechones, suavemente, como si estuviera explorando un territorio que me pertenece. Me encantaría sentir la suavidad de tu cabello entre mis dedos, como si fuera la seda más fina del mundo. Ese simple gesto, tan cotidiano, sería para mí un momento de paz absoluta.</p>
+            
+            <p>La distancia nos separa físicamente, pero en mi mente, siempre estás cerca. En mis recuerdos, en mis pensamientos, en mis sueños. Y aunque no pueda tocarte, sé que en algún lugar, en algún momento, volveremos a estar juntos. Porque lo que tenemos es demasiado valioso para perderlo. Es algo que merece la pena esperar, merece la pena luchar por ello.</p>
+            
+            <p>Gracias por ser mi refugio, mi hogar, mi lugar seguro. Gracias por permitirme sentir que puedo tocarte, aunque sea en mi imaginación. Gracias por ser tú, y por ser quien siempre estarás en mi corazón.</p>
+        </div>
+        
+        <div class="signature">
+            Siempre tuyo,<br>
+            GRETO
+        </div>
+        
+        <div class="footer">
+            <div class="nav-container">
+                <a href="Page7.html" class="nav-btn">Página Anterior</a>
+                <a href="Page9.html" class="nav-btn">Página Principal</a>
+            </div>
+            <div class="page-info">Página 8 de 9</div>
+        </div>
+    </div>
+</body>
+</html>
+

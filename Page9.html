@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Lissy - Página 10</title>
+    <script src="audio-manager.js"></script>
+    <style>
+        :root {
+            --background: #0a0a1a;
+            --flame: #ff9800;
+            --flame2: #ffeb3b;
+            --text: #f0f0ff;
+            --shadow: rgba(255, 152, 0, 0.3);
+            --border: rgba(255, 152, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--background);
+            min-height: 100vh;
+            overflow-y: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        .candle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .candle-base {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 20px;
+            background: #8B4513;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .flame {
+            position: absolute;
+            bottom: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 25px;
+            background: radial-gradient(circle, var(--flame2), var(--flame));
+            border-radius: 50% 50% 0 0;
+            animation: flicker 1s infinite alternate;
+        }
+
+        .smoke {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 4s infinite;
+        }
+
+        .smoke1 {
+            bottom: 35%;
+            left: 48%;
+            animation-delay: 0s;
+        }
+
+        .smoke2 {
+            bottom: 35%;
+            left: 50%;
+            animation-delay: 0.5s;
+        }
+
+        .smoke3 {
+            bottom: 35%;
+            left: 52%;
+            animation-delay: 1s;
+        }
+
+        .smoke4 {
+            bottom: 38%;
+            left: 47%;
+            animation-delay: 1.5s;
+        }
+
+        .smoke5 {
+            bottom: 38%;
+            left: 53%;
+            animation-delay: 2s;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-5px) scale(1.2); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0.8; }
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+            transform: perspective(1000px) rotateX(1deg);
+            transition: transform 0.3s ease;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 2px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .container:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--flame), #ff5722);
+            box-shadow: 0 4px 15px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--text);
+            text-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #ff9800, #ff5722);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 10px rgba(255, 152, 0, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(255, 87, 34, 0.8); }
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #f0f0ff;
+            max-width: 700px;
+            margin: 15px auto 0;
+            font-style: italic;
+            animation: subtitleFade 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFade {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .letter {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            background: rgba(36, 36, 66, 0.8);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff9800" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.05;
+        }
+
+        .letter p {
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .letter p::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--flame);
+            font-weight: bold;
+        }
+
+        .letter p:hover {
+            transform: translateX(5px);
+            color: #f0f0ff;
+        }
+
+        .highlight {
+            background: linear-gradient(to right, rgba(255, 152, 0, 0.1), rgba(255, 87, 34, 0.1));
+            border-left: 5px solid var(--flame);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+            font-weight: 500;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ff9800" stroke-width="1" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.1;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.15);
+        }
+
+        .signature {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.8rem;
+            color: var(--flame);
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .signature::after {
+            content: "❤️";
+            margin-left: 10px;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #f0f0ff;
+            opacity: 0.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: linear-gradient(to right, var(--flame), #ff5722);
+            color: #f0f0ff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+            min-width: 120px;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(to right, #ff5722, var(--flame));
+        }
+
+        .page-info {
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .container {
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2.8rem;
+            }
+            .letter {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            .letter {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .nav-btn {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .letter {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="candle-container">
+        <div class="candle-base"></div>
+        <div class="flame"></div>
+        <div class="smoke smoke1"></div>
+        <div class="smoke smoke2"></div>
+        <div class="smoke smoke3"></div>
+        <div class="smoke smoke4"></div>
+        <div class="smoke smoke5"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Para Lissy</h1>
+            <p class="subtitle">Página 10: La Última Palabra</p>
+        </div>
+        
+        <div class="letter">
+            <p>Si esta fuera la última vez que pudiera escribirte, si estas palabras fueran lo último que dejara para ti… entonces no quiero que quede nada guardado. No quiero que ninguna verdad se quede atorada en mi garganta como tantas veces me pasó. Porque si este fuera el final, si ya no tuviera otra página más, quiero que al menos esto quede claro:</p>
+            
+            <p>Te extraño.<br>
+            Mucho más de lo que jamás pensé que podría extrañar a alguien.</p>
+            
+            <p>Me duele haber perdido mi cuenta, porque también perdí tiempo contigo. Tiempo que nunca vuelve, tiempo que hubiera querido aprovechar para decirte más, escucharte más, estar para ti como tú mereces. Y aunque sé que el pasado no se puede cambiar, todavía me pesa no haber estado en esos momentos en los que realmente quería estar ahí.</p>
+            
+            <div class="highlight">
+                <p>Hoy lo digo distinto: quiero darte cada segundo que pueda. Quiero que nunca falte un "te quiero", uno sincero, de esos que salen del corazón sin pensarlo demasiado. Porque no sé qué pasará mañana, ni pasado, ni en el futuro… y sí, da miedo. Pero prefiero sentir ese miedo contigo que vivir tranquilo sin ti.</p>
+            </div>
+            
+            <p>Sé que tengo cosas que mejorar. Sé que sigo creciendo, aprendiendo, intentando ser mejor cada día. Y aun así estás ahí, acompañándome, creyendo en mí incluso cuando yo mismo dudo. ¿Sabes lo que significa eso? Significa más de lo que puedo explicar.</p>
+            
+            <div class="highlight">
+                <p>Si esta fuera mi última carta…<br>
+                Quisiera dejarte algo que no desaparezca con el tiempo:<br><br>
+                Que te quiero.<br>
+                Que te aprecio.<br>
+                Que te llevo conmigo más de lo que imaginas.</p>
+            </div>
+            
+            <p>Y aunque no diga esa palabra completa —esa que empieza con "a"— tú ya sabes lo que viene después. Tú ya sabes lo que siento, incluso si no lo digo entero. Pero si un día lo digo, será porque lo siento de verdad.</p>
+            
+            <p>Si esta fuera mi última carta, quiero que sepas que siempre estarías aquí, en mi mente y en mi corazón. En cada recuerdo, en cada risa, en cada silencio.</p>
+            
+            <p>Y si de mí dependiera, esta no sería la última.<br>
+            Todavía tengo mucho que vivir contigo.</p>
+            
+            <p>Gracias por ser mi refugio, mi hogar, mi lugar seguro. Gracias por permitirme sentir que puedo tocarte, aunque sea en mi imaginación. Gracias por ser tú, y por ser quien siempre estarás en mi corazón.</p>
+        </div>
+        
+        <div class="signature">
+            Siempre tuyo,<br>
+            GRETO
+        </div>
+        
+        <div class="footer">
+            <div class="nav-container">
+                <a href="page8.html" class="nav-btn">Página Anterior</a>
+                <a href="page10.html" class="nav-btn">Página Principal</a>
+            </div>
+            <div class="page-info">Página 9 de 10</div>
+        </div>
+    </div>
+</body>
+</html>
+
