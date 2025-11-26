@@ -1397,7 +1397,7 @@
         <!-- Sección "Now Playing" mejorada -->
         <div class="now-playing">
           <div class="now-playing-title typewriter" id="currentTitle">Dedicada a ella</div>
-          <div class="now-playing-subtitle" id="currentSubtitle">A la chica más linda, la que merece cada verso y cada suspiro.</div>
+          <div class="now-playing-subtitle" id="currentSubtitle">Para ti, con todo mi corazón.</div>
         </div>
         <!-- Visualizador de audio -->
         <div class="audio-visualizer">
@@ -1469,21 +1469,21 @@
             <i class="fas fa-music"></i> 3 momentos especiales
           </div>
         </div>
-        <!-- Primera canción: Dedicada a ella -->
+        <!-- Primera canción: Dedicada a ella (texto modificado) -->
         <div class="track active" 
              data-src="https://www.youtube.com/embed/kPa7bsKwL-c?enablejsapi=1&controls=0" 
              data-title="Dedicada a ella" 
-             data-subtitle="A la chica más linda, la que merece cada verso y cada suspiro."
+             data-subtitle="Para ti, con todo mi corazón." 
              data-duration="3:45"
              data-lyrics="A ti, que apareces en mis pensamientos como una luz cálida: esta canción es una pequeña ofrenda. Cada nota te nombra en secreto, cada palabra quiere cuidar lo que eres —tu risa, tu calma, esa forma de mirar— como quien guarda un tesoro del tiempo. Si pudiera, la ataría a tus manos para que la lleves cuando quieras recordar que alguien te encuentra perfecta.">
           <div class="thumb">1</div>
           <div class="meta">
             <div class="title">Dedicada a ella</div>
-            <div class="sub">A la chica más linda, la que merece cada verso y cada suspiro.</div>
+            <div class="sub">Para ti, con todo mi corazón.</div>
           </div>
           <div class="duration">3:45</div>
         </div>
-        <!-- Segunda canción: Mensaje sobre nosotros -->
+        <!-- Segunda canción: Mensaje sobre nosotros (sin cambios) -->
         <div class="track" 
              data-src="https://www.youtube.com/embed/C0OXsyR2mMM?enablejsapi=1&controls=0" 
              data-title="Mensaje sobre nosotros" 
@@ -1497,7 +1497,7 @@
           </div>
           <div class="duration">4:12</div>
         </div>
-        <!-- Tercera canción: Para sentirme cómodo -->
+        <!-- Tercera canción: Para sentirme cómodo (sin cambios) -->
         <div class="track" 
              data-src="https://www.youtube.com/embed/Chs2bmqzyUs?enablejsapi=1&controls=0" 
              data-title="Para sentirme cómodo" 
@@ -1634,8 +1634,10 @@
         updateNowPlaying();
         // Mostrar spinner de carga
         loadingSpinner.classList.add('show');
-        // Actualizar iframe
-        iframe.src = finalSrc + (autoplay ? '&autoplay=1' : '');
+        // Actualizar iframe con un pequeño retraso para asegurar la carga
+        setTimeout(() => {
+          iframe.src = finalSrc + (autoplay ? '&autoplay=1' : '');
+        }, 100);
         // Establecer duración
         duration = parseDuration(track.dataset.duration);
         updateProgress();
@@ -1893,7 +1895,10 @@
           setTimeout(() => {
             ripple.remove();
           }, 600);
-          loadTrack(index, true);
+          // Cargar la pista con un pequeño retraso para asegurar que el iframe está listo
+          setTimeout(() => {
+            loadTrack(index, true);
+          }, 150);
           createSparkle(e.clientX, e.clientY);
         });
         // Efectos hover mejorados
