@@ -3,21 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Para Ti - Reproductor Romántico</title>
-  <meta name="description" content="Un reproductor musical romántico con tres canciones especiales dedicadas a ti. Diseño elegante con títulos ocultos para mayor sorpresa.">
+  <title>Mensaje Sobre Nosotros - Reproductor Romántico</title>
+  <meta name="description" content="Un reproductor musical romántico con una sola canción especial dedicada a ti. Diseño elegante con elementos decorativos y animaciones suaves.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
   <!-- Tipografía y recursos externos -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* 
-     * ===========================================================
-     * VARIABLES DE ESTILO Y PALETA DE COLORES ROMÁNTICOS MEJORADAS
-     * Paleta ampliada con más matices y transiciones suaves
-     * ===========================================================
-     */
     :root {
-      /* Colores principales ampliados */
       --deep-rose: #ff4d8d;
       --blush-pink: #ff9ec5;
       --darker-rose: #e63972;
@@ -36,24 +29,20 @@
       --rose-quartz: #e8c0c8;
       --champagne: #f7f0e6;
       --pearl-white: #fdf6e3;
-      /* Degradados adicionales */
       --gradient-primary: linear-gradient(135deg, var(--deep-rose), var(--blush-pink), var(--warm-amber));
       --gradient-secondary: linear-gradient(145deg, var(--velvet-purple), var(--midnight-blue), var(--deep-navy));
       --gradient-accent: linear-gradient(90deg, var(--warm-amber), var(--golden-hour), var(--icy-blue));
-      /* Variables de fondo mejoradas */
       --bg-primary: #0a0f1a;
       --bg-secondary: #121a28;
       --bg-card: #0f1624;
       --bg-player: #070c18;
       --bg-playlist: #0d1422;
       --bg-overlay: rgba(5, 8, 18, 0.92);
-      /* Variables de texto mejoradas */
       --text-primary: #ffffff;
       --text-secondary: #c5d0e6;
       --text-muted: #8a9ab0;
       --text-accent: var(--deep-rose);
       --text-glow: rgba(255, 77, 141, 0.7);
-      /* Variables de interfaz mejoradas */
       --border-radius-sm: 8px;
       --border-radius-md: 12px;
       --border-radius-lg: 16px;
@@ -65,19 +54,18 @@
       --box-shadow-md: 0 8px 25px rgba(0, 0, 0, 0.25);
       --box-shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.4);
       --box-shadow-xlg: 0 25px 60px rgba(0, 0, 0, 0.6);
-      /* Animaciones y efectos mejorados */
       --pulse-duration: 2s;
       --float-duration: 8s;
       --glow-duration: 3s;
       --sparkle-duration: 4s;
       --fade-duration: 1.2s;
       --breathe-duration: 8s;
-      /* Audio visualizer colors */
       --viz-color-1: #ff4d8d;
       --viz-color-2: #ff9ec5;
       --viz-color-3: #ffc86a;
       --viz-color-4: #a0d8f0;
     }
+    
     * {
       margin: 0;
       padding: 0;
@@ -85,10 +73,12 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+    
     html {
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
+    
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       background: radial-gradient(circle at 10% 20%, rgba(75, 0, 130, 0.15) 0%, rgba(10, 17, 34, 0.95) 65%, rgba(5, 8, 18, 1) 100%),
@@ -106,7 +96,7 @@
       transition: var(--transition-base);
       background-attachment: fixed;
     }
-    /* Partículas de fondo adicionales - estrellas */
+    
     body::after {
       content: "";
       position: fixed;
@@ -118,13 +108,19 @@
         radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.15), transparent),
         radial-gradient(1px 1px at 50px 70px, rgba(255, 255, 255, 0.1), transparent),
         radial-gradient(2px 2px at 80px 40px, rgba(255, 215, 0, 0.1), transparent),
-        radial-gradient(1px 1px at 110px 90px, rgba(160, 216, 240, 0.1), transparent);
+        radial-gradient(1px 1px at 110px 90px, rgba(160, 216, 240, 0.1), transparent),
+        radial-gradient(1px 1px at 150px 120px, rgba(255, 77, 141, 0.05), transparent),
+        radial-gradient(1px 1px at 200px 180px, rgba(255, 200, 106, 0.05), transparent),
+        radial-gradient(1px 1px at 250px 220px, rgba(255, 77, 141, 0.03), transparent),
+        radial-gradient(1px 1px at 300px 280px, rgba(160, 216, 240, 0.03), transparent),
+        radial-gradient(1px 1px at 350px 320px, rgba(255, 255, 255, 0.08), transparent),
+        radial-gradient(1px 1px at 400px 360px, rgba(255, 200, 106, 0.03), transparent);
       background-size: 100px 100px;
       z-index: -3;
       opacity: 0.6;
       pointer-events: none;
     }
-    /* Patrón de fondo con corazones sutiles mejorado */
+    
     body::before {
       content: "";
       position: fixed;
@@ -135,16 +131,21 @@
       background-image: 
         radial-gradient(circle, rgba(255, 77, 141, 0.04) 1px, transparent 1px),
         radial-gradient(circle, rgba(255, 158, 197, 0.03) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255, 200, 106, 0.02) 1px, transparent 1px);
-      background-size: 45px 45px, 55px 55px, 70px 70px;
-      background-position: 0 0, 25px 25px, 35px 35px;
+        radial-gradient(circle, rgba(255, 200, 106, 0.02) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 77, 141, 0.02) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 158, 197, 0.01) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 200, 106, 0.01) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 77, 141, 0.01) 1px, transparent 1px);
+      background-size: 45px 45px, 55px 55px, 70px 70px, 60px 60px, 80px 80px, 90px 90px, 100px 100px;
+      background-position: 0 0, 25px 25px, 35px 35px, 50px 50px, 70px 70px, 90px 90px, 110px 110px;
       z-index: -2;
       opacity: 0.8;
       pointer-events: none;
     }
+    
     .wrap {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1000px;
       background: var(--gradient-secondary);
       backdrop-filter: blur(12px);
       border-radius: var(--border-radius-xl);
@@ -158,7 +159,9 @@
       z-index: 10;
       transition: var(--transition-base);
       background-clip: padding-box;
+      border: 3px solid rgba(255, 77, 141, 0.2);
     }
+    
     .wrap::before {
       content: "";
       position: absolute;
@@ -170,6 +173,7 @@
       z-index: -1;
       animation: rotate 30s linear infinite;
     }
+    
     .wrap::after {
       content: "";
       position: absolute;
@@ -180,11 +184,12 @@
       background: linear-gradient(to top, var(--deep-navy), transparent);
       z-index: -1;
     }
+    
     @keyframes rotate {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    /* Partículas animadas (corazones) mejoradas */
+    
     .heart {
       position: absolute;
       width: 14px;
@@ -200,39 +205,43 @@
       animation-iteration-count: infinite;
       filter: drop-shadow(0 0 5px var(--deep-rose));
     }
-    /* Corazones adicionales para más movimiento */
+    
     .h1 {
-      left: 6%;
+      left: 5%;
       top: 10%;
       animation: float1 var(--float-duration) infinite;
       width: 10px;
       height: 10px;
       opacity: 0.7;
     }
+    
     .h2 {
       left: 85%;
-      top: 22%;
+      top: 20%;
       width: 18px;
       height: 18px;
       animation: float2 calc(var(--float-duration) + 2s) infinite;
       opacity: 0.9;
     }
+    
     .h3 {
       left: 20%;
-      top: 78%;
+      top: 70%;
       animation: float3 calc(var(--float-duration) - 1s) infinite;
       width: 12px;
       height: 12px;
       opacity: 0.8;
     }
+    
     .h4 {
       left: 70%;
-      top: 68%;
+      top: 60%;
       width: 16px;
       height: 16px;
       animation: float1 calc(var(--float-duration) + 3s) infinite;
       opacity: 0.85;
     }
+    
     .h5 {
       left: 40%;
       top: 15%;
@@ -241,6 +250,7 @@
       animation: float2 calc(var(--float-duration) - 3s) infinite;
       opacity: 0.6;
     }
+    
     .h6 {
       left: 10%;
       bottom: 12%;
@@ -249,13 +259,50 @@
       animation: float3 calc(var(--float-duration) + 5s) infinite;
       opacity: 0.75;
     }
-    /* Nuevos elementos decorativos */
+    
+    .h7 {
+      right: 15%;
+      top: 30%;
+      width: 14px;
+      height: 14px;
+      animation: float1 calc(var(--float-duration) + 1s) infinite;
+      opacity: 0.7;
+    }
+    
+    .h8 {
+      right: 5%;
+      bottom: 20%;
+      width: 16px;
+      height: 16px;
+      animation: float2 calc(var(--float-duration) - 2s) infinite;
+      opacity: 0.8;
+    }
+    
+    .h9 {
+      left: 60%;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      animation: float3 calc(var(--float-duration) + 4s) infinite;
+      opacity: 0.7;
+    }
+    
+    .h10 {
+      left: 30%;
+      bottom: 15%;
+      width: 18px;
+      height: 18px;
+      animation: float1 calc(var(--float-duration) + 6s) infinite;
+      opacity: 0.85;
+    }
+    
     .rose-petal {
       position: absolute;
       opacity: 0.15;
       z-index: 0;
       filter: blur(1px);
     }
+    
     .petal-1 {
       top: 5%;
       left: 3%;
@@ -263,6 +310,7 @@
       transform: rotate(-25deg);
       color: var(--blush-pink);
     }
+    
     .petal-2 {
       bottom: 8%;
       right: 4%;
@@ -270,6 +318,47 @@
       transform: rotate(15deg);
       color: var(--deep-rose);
     }
+    
+    .petal-3 {
+      top: 40%;
+      left: 25%;
+      font-size: 2.5rem;
+      transform: rotate(-15deg);
+      color: var(--dusty-rose);
+    }
+    
+    .petal-4 {
+      top: 60%;
+      right: 15%;
+      font-size: 3.5rem;
+      transform: rotate(20deg);
+      color: var(--rose-quartz);
+    }
+    
+    .petal-5 {
+      bottom: 20%;
+      left: 40%;
+      font-size: 2rem;
+      transform: rotate(10deg);
+      color: var(--darker-rose);
+    }
+    
+    .petal-6 {
+      top: 25%;
+      right: 30%;
+      font-size: 2.8rem;
+      transform: rotate(-10deg);
+      color: var(--blush-pink);
+    }
+    
+    .petal-7 {
+      bottom: 30%;
+      left: 60%;
+      font-size: 3.2rem;
+      transform: rotate(5deg);
+      color: var(--darker-rose);
+    }
+    
     .date-badge {
       position: absolute;
       bottom: 15px;
@@ -285,7 +374,7 @@
       z-index: 5;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     }
-    /* Cabecera mejorada con más detalles */
+    
     header {
       display: flex;
       flex-direction: column;
@@ -296,6 +385,7 @@
       z-index: 5;
       margin-bottom: 15px;
     }
+    
     header::before, header::after {
       content: "";
       position: absolute;
@@ -306,14 +396,17 @@
       opacity: 0.7;
       border-radius: 3px;
     }
+    
     header::before {
       left: 3%;
       transform: rotate(-5deg);
     }
+    
     header::after {
       right: 3%;
       transform: rotate(5deg);
     }
+    
     .dedication {
       font-family: 'Dancing Script', cursive;
       font-size: 1.5rem;
@@ -323,6 +416,7 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
+    
     h1 {
       font-family: 'Great Vibes', cursive;
       color: transparent;
@@ -338,6 +432,7 @@
       animation: glow 3s ease-in-out infinite alternate;
       filter: drop-shadow(0 0 10px rgba(255, 77, 141, 0.2));
     }
+    
     h1::after {
       content: "";
       position: absolute;
@@ -349,6 +444,7 @@
       background: var(--gradient-primary);
       border-radius: 3px;
     }
+    
     .subtitle {
       font-family: 'Caveat', cursive;
       color: var(--warm-amber);
@@ -358,6 +454,7 @@
       letter-spacing: 0.8px;
       text-shadow: 0 2px 8px rgba(255, 200, 106, 0.3);
     }
+    
     p.lead {
       margin: 18px 0 0;
       color: var(--text-secondary);
@@ -374,11 +471,13 @@
       backdrop-filter: blur(5px);
       box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
     }
+    
     p.lead span {
       color: var(--text-accent);
       font-weight: 700;
       position: relative;
     }
+    
     p.lead span::after {
       content: "";
       position: absolute;
@@ -390,15 +489,15 @@
       opacity: 0.5;
       border-radius: 2px;
     }
+    
     .player-area {
       display: flex;
-      gap: 30px;
+      justify-content: center;
       margin-top: 10px;
-      align-items: flex-start;
       position: relative;
       z-index: 5;
     }
-    /* Tarjeta del reproductor mejorada */
+    
     .player-card {
       flex: 1;
       background: linear-gradient(145deg, rgba(25, 35, 65, 0.85), rgba(15, 25, 50, 0.95));
@@ -412,7 +511,9 @@
       overflow: hidden;
       transition: var(--transition-base);
       backdrop-filter: blur(8px);
+      border: 3px solid rgba(255, 77, 141, 0.2);
     }
+    
     .player-card::before {
       content: "";
       position: absolute;
@@ -424,6 +525,7 @@
       z-index: -1;
       animation: rotate 40s linear infinite reverse;
     }
+    
     .player-card::after {
       content: "";
       position: absolute;
@@ -431,6 +533,7 @@
       background: linear-gradient(45deg, transparent 40%, rgba(30, 10, 40, 0.15));
       z-index: -1;
     }
+    
     .player-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--box-shadow-xlg),
@@ -438,6 +541,7 @@
                   inset 0 0 25px rgba(0, 0, 0, 0.5);
       border-color: rgba(255, 77, 141, 0.3);
     }
+    
     .now-playing {
       text-align: center;
       margin-bottom: 20px;
@@ -448,6 +552,7 @@
       position: relative;
       overflow: hidden;
     }
+    
     .now-playing::before {
       content: "";
       position: absolute;
@@ -457,6 +562,7 @@
       height: 3px;
       background: var(--gradient-primary);
     }
+    
     .now-playing-title {
       font-family: 'Caveat', cursive;
       font-size: 2.4rem;
@@ -466,6 +572,7 @@
       position: relative;
       animation: breathe 8s infinite;
     }
+    
     .now-playing-subtitle {
       color: var(--soft-lavender);
       font-size: 1.15rem;
@@ -475,7 +582,7 @@
       margin: 0 auto;
       line-height: 1.6;
     }
-    /* Audio visualizer */
+    
     .audio-visualizer {
       display: flex;
       justify-content: center;
@@ -485,6 +592,7 @@
       margin: 15px 0;
       opacity: 0.9;
     }
+    
     .viz-bar {
       width: 6px;
       height: 100%;
@@ -493,13 +601,14 @@
       transition: height 0.1s ease;
       box-shadow: 0 0 8px var(--viz-color-1);
     }
+    
     .viz-bar:nth-child(2) { background: var(--viz-color-2); box-shadow: 0 0 8px var(--viz-color-2); }
     .viz-bar:nth-child(3) { background: var(--viz-color-3); box-shadow: 0 0 8px var(--viz-color-3); }
     .viz-bar:nth-child(4) { background: var(--viz-color-4); box-shadow: 0 0 8px var(--viz-color-4); }
     .viz-bar:nth-child(5) { background: var(--viz-color-1); box-shadow: 0 0 8px var(--viz-color-1); }
     .viz-bar:nth-child(6) { background: var(--viz-color-2); box-shadow: 0 0 8px var(--viz-color-2); }
     .viz-bar:nth-child(7) { background: var(--viz-color-3); box-shadow: 0 0 8px var(--viz-color-3); }
-    /* Envoltorio del reproductor de YouTube mejorado */
+    
     .player-wrap {
       position: relative;
       border-radius: var(--border-radius-lg);
@@ -508,16 +617,19 @@
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6),
                   inset 0 0 20px rgba(0, 0, 0, 0.8);
       height: 0;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      padding-bottom: 56.25%;
       transition: var(--transition-base);
       border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(2px);
+      border: 2px solid rgba(255, 77, 141, 0.2);
     }
+    
     .player-wrap:hover {
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7),
                   inset 0 0 25px rgba(0, 0, 0, 0.9),
                   0 0 25px rgba(255, 77, 141, 0.2);
     }
+    
     iframe {
       position: absolute;
       top: 0;
@@ -529,9 +641,11 @@
       transition: opacity 0.3s ease;
       filter: brightness(1.05);
     }
+    
     iframe.loading {
       opacity: 0.3;
     }
+    
     .loading-spinner {
       position: absolute;
       top: 50%;
@@ -547,6 +661,7 @@
       display: none;
       box-shadow: 0 0 20px rgba(255, 77, 141, 0.4);
     }
+    
     .loading-spinner::after {
       content: "";
       position: absolute;
@@ -556,14 +671,16 @@
       border-radius: 50%;
       animation: spin 1.5s linear infinite reverse;
     }
+    
     .loading-spinner.show {
       display: block;
     }
+    
     @keyframes spin {
       0% { transform: translate(-50%, -50%) rotate(0deg); }
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
-    /* Cubiertas para ocultar títulos y logotipos mejoradas */
+    
     .cover-title {
       position: absolute;
       left: 0;
@@ -576,6 +693,7 @@
       backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255, 77, 141, 0.1);
     }
+    
     .cover-logo {
       position: absolute;
       right: 15px;
@@ -592,11 +710,12 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       animation: pulse 4s infinite;
     }
-    /* Barra de progreso de la canción mejorada */
+    
     .progress-container {
       margin: 25px 0 20px;
       position: relative;
     }
+    
     .progress-bar {
       height: 10px;
       background: rgba(255, 255, 255, 0.08);
@@ -607,6 +726,7 @@
       box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
+    
     .progress-fill {
       height: 100%;
       background: var(--gradient-primary);
@@ -618,11 +738,13 @@
       background-size: 200% 200%;
       animation: gradientShift 3s ease infinite;
     }
+    
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+    
     .progress-fill::after {
       content: "";
       position: absolute;
@@ -637,6 +759,7 @@
                   0 0 20px rgba(255, 215, 0, 0.4);
       animation: pulse 1.5s infinite;
     }
+    
     .time-display {
       display: flex;
       justify-content: space-between;
@@ -646,7 +769,7 @@
       font-weight: 500;
       letter-spacing: 0.5px;
     }
-    /* Controles de reproducción mejorados */
+    
     .controls {
       display: flex;
       flex-wrap: wrap;
@@ -656,6 +779,7 @@
       padding: 18px 0 15px;
       position: relative;
     }
+    
     .controls::before {
       content: "";
       position: absolute;
@@ -666,6 +790,7 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(255, 77, 141, 0.3), transparent);
     }
+    
     .btn {
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -685,6 +810,7 @@
       z-index: 1;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
     }
+    
     .btn::before {
       content: "";
       position: absolute;
@@ -696,6 +822,7 @@
       z-index: -1;
       transition: var(--transition-base);
     }
+    
     .btn::after {
       content: "";
       position: absolute;
@@ -704,23 +831,28 @@
       border-radius: 54px;
       z-index: -1;
     }
+    
     .btn:hover::before {
       background: rgba(255, 255, 255, 0.15);
     }
+    
     .btn:active {
       transform: translateY(1px);
       opacity: 0.95;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+    
     .btn i {
       font-size: 1.2rem;
       min-width: 22px;
       text-align: center;
       transition: var(--transition-base);
     }
+    
     .btn:hover i {
       transform: scale(1.1);
     }
+    
     .btn.primary {
       background: var(--gradient-primary);
       border: none;
@@ -729,6 +861,7 @@
       position: relative;
       overflow: visible;
     }
+    
     .btn.primary::before {
       content: "";
       position: absolute;
@@ -739,10 +872,12 @@
       opacity: 0.8;
       animation: pulse 2s infinite;
     }
+    
     .btn.primary:hover {
       box-shadow: 0 8px 30px rgba(255, 77, 141, 0.55);
       transform: translateY(-3px);
     }
+    
     .btn.primary::after {
       content: "";
       position: absolute;
@@ -751,6 +886,7 @@
       border-radius: 53px;
       z-index: -1;
     }
+    
     .volume-control {
       display: flex;
       align-items: center;
@@ -758,6 +894,7 @@
       margin-left: auto;
       padding: 6px 0;
     }
+    
     .volume-icon {
       color: var(--text-secondary);
       font-size: 1.2rem;
@@ -765,10 +902,12 @@
       text-align: center;
       transition: var(--transition-base);
     }
+    
     .volume-icon.active {
       color: var(--warm-amber);
       text-shadow: 0 0 10px rgba(255, 200, 106, 0.5);
     }
+    
     .slider {
       width: 130px;
       height: 6px;
@@ -781,6 +920,7 @@
       box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
+    
     .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: 22px;
@@ -793,6 +933,7 @@
       transition: var(--transition-smooth);
       border: 3px solid white;
     }
+    
     .slider::-moz-range-thumb {
       width: 22px;
       height: 22px;
@@ -804,203 +945,13 @@
                   0 0 25px rgba(255, 215, 0, 0.3);
       border: 3px solid white;
     }
+    
     .slider:hover::-webkit-slider-thumb {
       transform: scale(1.15) rotate(5deg);
       box-shadow: 0 0 18px rgba(255, 77, 141, 0.9),
                   0 0 35px rgba(255, 215, 0, 0.5);
     }
-    /* Lista de reproducción mejorada */
-    .playlist {
-      width: 360px;
-      max-width: 40%;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      background: linear-gradient(145deg, rgba(25, 35, 65, 0.75), rgba(15, 25, 50, 0.85));
-      border-radius: var(--border-radius-lg);
-      padding: 25px;
-      box-shadow: var(--box-shadow-md),
-                  0 0 30px rgba(160, 216, 240, 0.15),
-                  inset 0 0 15px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition-base);
-      backdrop-filter: blur(5px);
-    }
-    .playlist::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--gradient-primary);
-    }
-    .playlist::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient-accent);
-    }
-    .playlist-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 2px solid rgba(255, 77, 141, 0.2);
-    }
-    .playlist-title {
-      font-family: 'Caveat', cursive;
-      font-size: 2rem;
-      color: var(--warm-amber);
-      letter-spacing: 0.8px;
-      position: relative;
-    }
-    .playlist-title::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background: var(--gradient-primary);
-      border-radius: 2px;
-    }
-    .memory-counter {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      color: var(--icy-blue);
-      border: 1px solid rgba(160, 216, 240, 0.3);
-    }
-    .track {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      padding: 16px;
-      border-radius: var(--border-radius-md);
-      background: rgba(10, 15, 30, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    }
-    .track:hover {
-      background: rgba(35, 30, 60, 0.75);
-      transform: translateX(6px);
-      border-color: rgba(255, 77, 141, 0.4);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
-                  0 0 15px rgba(255, 77, 141, 0.15);
-    }
-    .track.active {
-      outline: 2px solid rgba(255, 77, 141, 0.4);
-      background: rgba(45, 25, 50, 0.75);
-      border-color: rgba(255, 77, 141, 0.6);
-      box-shadow: 0 0 20px rgba(255, 77, 141, 0.3);
-      transform: translateX(0);
-    }
-    .track.active::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 5px;
-      height: 100%;
-      background: var(--gradient-primary);
-    }
-    .thumb {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--gradient-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #2a0a2a;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      box-shadow: 0 6px 20px rgba(255, 77, 141, 0.5),
-                  0 0 15px rgba(255, 215, 0, 0.3);
-      border: 3px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition-smooth);
-    }
-    .thumb::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: var(--gradient-primary);
-      border-radius: 50%;
-      z-index: -1;
-      opacity: 0.8;
-      animation: pulse 3s infinite;
-    }
-    .thumb::after {
-      content: "";
-      position: absolute;
-      top: -60%;
-      left: -60%;
-      width: 220%;
-      height: 220%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-      transform: rotate(30deg);
-    }
-    .meta {
-      flex: 1;
-      min-width: 0;
-    }
-    .title {
-      font-weight: 700;
-      color: var(--text-primary);
-      font-size: 1.25rem;
-      margin-bottom: 6px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      position: relative;
-      transition: var(--transition-base);
-    }
-    .track:hover .title {
-      color: var(--warm-amber);
-      white-space: normal;
-      animation: fadeIn 0.3s ease;
-    }
-    .sub {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      transition: var(--transition-base);
-      line-height: 1.5;
-    }
-    .track:hover .sub {
-      color: var(--soft-lavender);
-      white-space: normal;
-    }
-    .duration {
-      color: var(--warm-amber);
-      font-weight: 600;
-      min-width: 50px;
-      text-align: right;
-      font-size: 1.05rem;
-      position: relative;
-    }
-    .track.active .duration {
-      color: var(--text-primary);
-      text-shadow: 0 0 8px rgba(255, 77, 141, 0.6);
-    }
-    /* Letras de canciones mejoradas */
+    
     .lyrics-container {
       margin-top: 25px;
       background: rgba(12, 18, 35, 0.8);
@@ -1016,11 +967,13 @@
       transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
       backdrop-filter: blur(5px);
     }
+    
     .lyrics-container.show {
       max-height: 400px;
       opacity: 1;
       margin-top: 20px;
     }
+    
     .lyrics-container::before {
       content: "";
       position: absolute;
@@ -1030,6 +983,7 @@
       height: 4px;
       background: var(--gradient-accent);
     }
+    
     .lyrics-container::after {
       content: "";
       position: absolute;
@@ -1039,6 +993,7 @@
       height: 3px;
       background: var(--gradient-primary);
     }
+    
     .lyrics-header {
       display: flex;
       justify-content: space-between;
@@ -1047,6 +1002,7 @@
       padding-bottom: 15px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
     .lyrics-title {
       font-family: 'Dancing Script', cursive;
       font-size: 1.9rem;
@@ -1054,6 +1010,7 @@
       letter-spacing: 1px;
       position: relative;
     }
+    
     .lyrics-title::after {
       content: "";
       position: absolute;
@@ -1064,6 +1021,7 @@
       background: var(--sky-teal);
       border-radius: 2px;
     }
+    
     .lyrics-content {
       color: var(--pearl-white);
       line-height: 1.9;
@@ -1078,6 +1036,7 @@
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       position: relative;
     }
+    
     .lyrics-content::before, .lyrics-content::after {
       content: """;
       font-family: 'Great Vibes', cursive;
@@ -1086,28 +1045,33 @@
       position: absolute;
       opacity: 0.7;
     }
+    
     .lyrics-content::before {
       top: -20px;
       left: 15px;
     }
+    
     .lyrics-content::after {
       bottom: -40px;
       right: 15px;
       transform: rotate(180deg);
     }
+    
     .lyrics-content::-webkit-scrollbar {
       width: 8px;
     }
+    
     .lyrics-content::-webkit-scrollbar-track {
       background: rgba(0, 0, 0, 0.25);
       border-radius: 4px;
     }
+    
     .lyrics-content::-webkit-scrollbar-thumb {
       background: var(--gradient-primary);
       border-radius: 4px;
       border: 2px solid rgba(0, 0, 0, 0.3);
     }
-    /* Pie de página mejorado */
+    
     footer {
       margin-top: 30px;
       color: var(--text-muted);
@@ -1124,12 +1088,14 @@
       backdrop-filter: blur(5px);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     }
+    
     footer .nav-container {
       display: flex;
       justify-content: center;
       gap: 20px;
       margin-bottom: 10px;
     }
+    
     footer .nav-container .btn {
       background: rgba(255, 77, 141, 0.2);
       border: 1px solid rgba(255, 77, 141, 0.3);
@@ -1139,16 +1105,19 @@
       border-radius: 50px;
       transition: all 0.3s;
     }
+    
     footer .nav-container .btn:hover {
       background: rgba(255, 77, 141, 0.4);
       transform: translateY(-2px);
     }
+    
     footer .page-info {
       margin: 10px 0;
       font-size: 0.9rem;
       color: var(--warm-amber);
       font-weight: 500;
     }
+    
     footer .footer-message {
       margin-top: 15px;
       font-style: italic;
@@ -1157,7 +1126,7 @@
       letter-spacing: 0.5px;
       text-shadow: 0 0 10px rgba(255, 77, 141, 0.3);
     }
-    /* Botón de acción flotante mejorado */
+    
     .fab {
       position: fixed;
       bottom: 35px;
@@ -1180,15 +1149,18 @@
       outline: none;
       animation: heartbeat 2s infinite;
     }
+    
     .fab:hover {
       transform: scale(1.1) rotate(5deg);
       box-shadow: 0 8px 35px rgba(255, 77, 141, 0.7),
                   0 0 25px rgba(255, 215, 0, 0.5);
     }
+    
     .fab i {
       animation: pulse 2s infinite;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
+    
     @keyframes heartbeat {
       0% { transform: scale(1); }
       14% { transform: scale(1.1); }
@@ -1196,7 +1168,7 @@
       42% { transform: scale(1.1); }
       70% { transform: scale(1); }
     }
-    /* Notificación mejorada */
+    
     .toast {
       position: fixed;
       bottom: 20px;
@@ -1219,33 +1191,22 @@
       font-family: 'Caveat', cursive;
       font-size: 1.1rem;
     }
+    
     .toast.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+    
     .toast i {
       font-size: 1.4rem;
       color: var(--warm-amber);
       text-shadow: 0 0 10px rgba(255, 200, 106, 0.6);
     }
-    /* Diseño responsivo mejorado */
+    
     @media (max-width: 1050px) {
       .player-area {
         flex-direction: column;
       }
-      .playlist {
-        width: 100%;
-        max-width: none;
-        order: 2;
-      }
-      .player-card {
-        order: 1;
-      }
-      .moon {
-        display: none;
-      }
-    }
-    @media (max-width: 768px) {
       .wrap {
         padding: 20px 15px;
         border-radius: var(--border-radius-lg);
@@ -1278,9 +1239,6 @@
         height: 60px;
         font-size: 1.4rem;
       }
-      .playlist {
-        padding: 20px 15px;
-      }
       .fab {
         width: 60px;
         height: 60px;
@@ -1289,6 +1247,7 @@
         right: 25px;
       }
     }
+    
     @media (max-width: 480px) {
       h1 {
         font-size: 2.9rem;
@@ -1334,32 +1293,28 @@
         padding: 8px 15px;
       }
     }
-    /* Animaciones adicionales */
+    
     @keyframes breathe {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
     }
+    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(255, 77, 141, 0.4); }
       70% { box-shadow: 0 0 0 15px rgba(255, 77, 141, 0); }
       100% { box-shadow: 0 0 0 0 rgba(255, 77, 141, 0); }
     }
-    /* Efecto de texto mecanografiado */
-    .typewriter {
-      overflow: hidden;
-      border-right: 3px solid var(--deep-rose);
-      white-space: nowrap;
-      margin: 0 auto;
-      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-    }
+    
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
     }
+    
     @keyframes blink-caret {
       from, to { border-color: transparent; }
       50% { border-color: var(--deep-rose); }
@@ -1371,6 +1326,11 @@
   <div class="moon">☾</div>
   <div class="rose-petal petal-1">✿</div>
   <div class="rose-petal petal-2">❀</div>
+  <div class="rose-petal petal-3">✿</div>
+  <div class="rose-petal petal-4">❀</div>
+  <div class="rose-petal petal-5">✿</div>
+  <div class="rose-petal petal-6">❀</div>
+  <div class="rose-petal petal-7">✿</div>
   <div class="date-badge">
     <i class="fas fa-heart"></i> Nuestro momento especial
   </div>
@@ -1382,23 +1342,30 @@
     <div class="heart h4"></div>
     <div class="heart h5"></div>
     <div class="heart h6"></div>
+    <div class="heart h7"></div>
+    <div class="heart h8"></div>
+    <div class="heart h9"></div>
+    <div class="heart h10"></div>
+    
     <!-- Cabecera mejorada con dedicatoria -->
     <header>
       <div class="dedication">Para la persona que ilumina mis días</div>
-      <h1>Para Ti</h1>
-      <div class="subtitle">Tres Momentos Especiales</div>
+      <h1>Mensaje Sobre Nosotros</h1>
+      <div class="subtitle">Un mensaje sincero hecho canción</div>
       <p class="lead">
-        <span>Una selección íntima de tres canciones</span> creada con todo mi corazón, con títulos ocultos para que cada momento sea una sorpresa que descubrir juntos 💖
+        <span>Un mensaje especial creado con todo mi corazón</span> para recordarte lo que siento por ti. Cada nota es un susurro de amor.
       </p>
     </header>
+    
     <div class="player-area">
       <!-- Tarjeta del reproductor mejorada -->
       <div class="player-card">
         <!-- Sección "Now Playing" mejorada -->
         <div class="now-playing">
-          <div class="now-playing-title typewriter" id="currentTitle">Dedicada a ella</div>
-          <div class="now-playing-subtitle" id="currentSubtitle">Para ti, con todo mi corazón.</div>
+          <div class="now-playing-title typewriter" id="currentTitle">Mensaje sobre nosotros</div>
+          <div class="now-playing-subtitle" id="currentSubtitle">Un mensaje mío, sincero: lo que pensé de los dos hecho canción.</div>
         </div>
+        
         <!-- Visualizador de audio -->
         <div class="audio-visualizer">
           <div class="viz-bar"></div>
@@ -1409,14 +1376,17 @@
           <div class="viz-bar"></div>
           <div class="viz-bar"></div>
         </div>
+        
         <!-- Contenedor del reproductor mejorado -->
         <div class="player-wrap">
           <div class="loading-spinner" id="loadingSpinner"></div>
-          <iframe id="playerFrame" src="https://www.youtube.com/embed/kPa7bsKwL-c?enablejsapi=1&controls=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="playerFrame" src="https://www.youtube.com/embed/C0OXsyR2mMM?enablejsapi=1&controls=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+          
           <!-- Cubiertas para ocultar título y logo mejoradas -->
           <div class="cover-title" aria-hidden="true"></div>
           <div class="cover-logo" aria-hidden="true"></div>
         </div>
+        
         <!-- Barra de progreso mejorada -->
         <div class="progress-container">
           <div class="progress-bar" id="progressBar">
@@ -1424,22 +1394,17 @@
           </div>
           <div class="time-display">
             <span id="currentTime">0:00</span>
-            <span id="duration">3:45</span>
+            <span id="duration">4:12</span>
           </div>
         </div>
-        <!-- Controles mejorados -->
+        
+        <!-- Controles mejorados (solo play/pause y volumen) -->
         <div class="controls">
-          <button class="btn" id="prev" title="Canción anterior">
-            <i class="fas fa-step-backward"></i>
-          </button>
           <button class="btn primary pulse-animation" id="play" title="Reproducir">
             <i class="fas fa-play"></i> <span>Reproducir</span>
           </button>
           <button class="btn" id="pause" title="Pausar">
             <i class="fas fa-pause"></i> <span>Pausar</span>
-          </button>
-          <button class="btn" id="next" title="Siguiente canción">
-            <i class="fas fa-step-forward"></i>
           </button>
           <div class="volume-control">
             <span class="volume-icon" id="volumeIcon">
@@ -1448,7 +1413,8 @@
             <input id="volume" class="slider" type="range" min="0" max="100" value="75" aria-label="Control de volumen" />
           </div>
         </div>
-        <!-- Letras de las canciones mejoradas -->
+        
+        <!-- Letras de la canción mejoradas -->
         <div class="lyrics-container" id="lyricsContainer">
           <div class="lyrics-header">
             <div class="lyrics-title" id="lyricsTitle">Letra de la canción</div>
@@ -1457,96 +1423,70 @@
             </button>
           </div>
           <div class="lyrics-content" id="lyricsContent">
-            <!-- Letra se cargará dinámicamente -->
+            Eres lo primero en lo que pienso en las mañanas<br>
+            Eres con quien quiero despertar entre las sabanas<br>
+            Eres mi deseo de 11:11<br>
+            Eres con quien quiero estar febrero catorce<br>
+            Tú<br>
+            Tú<br>
+            Lo intentamos si tu quieres, puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            Lo intentamos si tu quieres, puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            <br>
+            Eres mis canciones preferidas<br>
+            Tienes que ser tú, solo tú<br>
+            Eres lo mejor que podría pasarle a mi vida<br>
+            Perfecta melodía<br>
+            Tú<br>
+            Tú<br>
+            Lo intentamos si tu quieres<br>
+            Puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?<br>
+            Lo intentamos si tu quieres<br>
+            Puedo ser yo si te conviene<br>
+            Yo ya decidí<br>
+            ¿Y tú?
           </div>
-        </div>
-      </div>
-      <!-- Lista de reproducción mejorada con contador de memoria -->
-      <div class="playlist" id="playlist">
-        <div class="playlist-header">
-          <div class="playlist-title">Nuestras Canciones</div>
-          <div class="memory-counter">
-            <i class="fas fa-music"></i> 3 momentos especiales
-          </div>
-        </div>
-        <!-- Primera canción: Dedicada a ella (texto modificado) -->
-        <div class="track active" 
-             data-src="https://www.youtube.com/embed/kPa7bsKwL-c?enablejsapi=1&controls=0" 
-             data-title="Dedicada a ella" 
-             data-subtitle="Para ti, con todo mi corazón." 
-             data-duration="3:45"
-             data-lyrics="A ti, que apareces en mis pensamientos como una luz cálida: esta canción es una pequeña ofrenda. Cada nota te nombra en secreto, cada palabra quiere cuidar lo que eres —tu risa, tu calma, esa forma de mirar— como quien guarda un tesoro del tiempo. Si pudiera, la ataría a tus manos para que la lleves cuando quieras recordar que alguien te encuentra perfecta.">
-          <div class="thumb">1</div>
-          <div class="meta">
-            <div class="title">Dedicada a ella</div>
-            <div class="sub">Para ti, con todo mi corazón.</div>
-          </div>
-          <div class="duration">3:45</div>
-        </div>
-        <!-- Segunda canción: Mensaje sobre nosotros (sin cambios) -->
-        <div class="track" 
-             data-src="https://www.youtube.com/embed/C0OXsyR2mMM?enablejsapi=1&controls=0" 
-             data-title="Mensaje sobre nosotros" 
-             data-subtitle="Un mensaje mío, sincero: lo que pensé de los dos hecho canción."
-             data-duration="4:12"
-             data-lyrics="Es una cancion que solo que la cancion demuestra de los dos por esa razon lo puse por que es lo que me reecuerda">
-          <div class="thumb">2</div>
-          <div class="meta">
-            <div class="title">Mensaje sobre nosotros</div>
-            <div class="sub">Un mensaje mío, sincero: lo que pensé de los dos hecho canción.</div>
-          </div>
-          <div class="duration">4:12</div>
-        </div>
-        <!-- Tercera canción: Para sentirme cómodo (sin cambios) -->
-        <div class="track" 
-             data-src="https://www.youtube.com/embed/Chs2bmqzyUs?enablejsapi=1&controls=0" 
-             data-title="Para sentirme cómodo" 
-             data-subtitle="Una canción antigua para perderse, cómoda y cálida como un hogar."
-             data-duration="3:58"
-             data-lyrics="Esta es la melodía que me devuelve a tardes de calma, a una sensación de hogar que no necesita palabras. Suena a fotos en blanco y negro, a ventanas abiertas y a recuerdos que se estiran como una manta. La elijo para sentirme seguro, para recordar que hay cosas —pequeñas, lentas— que nos reconcilian con nosotros mismos. Ponla, cierra los ojos y deja que el tiempo sea suave.">
-          <div class="thumb">3</div>
-          <div class="meta">
-            <div class="title">Para sentirme cómodo</div>
-            <div class="sub">Una canción antigua para perderse, cómoda y cálida como un hogar.</div>
-          </div>
-          <div class="duration">3:58</div>
         </div>
       </div>
     </div>
+    
     <!-- Pie de página mejorado con más detalles -->
     <footer>
       <div class="nav-container">
-        <a href="page9.html" class="btn">Página Anterior</a>
         <a href="index.html" class="btn">Página Principal</a>
       </div>
-      <div class="page-info">Página 10 de 10</div>
-      <p class="footer-message">Este es el último capítulo de nuestra carta, pero nuestro amor no tiene fin. Gracias por ser mi razón, mi hogar, y mi eterno susurro.</p>
+      <div class="page-info">Canción única - Momento especial</div>
+      <p class="footer-message">Este es un mensaje de amor hecho canción, para recordarte que siempre estarás en mi corazón.</p>
     </footer>
   </div>
+  
   <!-- Botón de acción flotante mejorado -->
   <button class="fab" id="fabButton" title="Mostrar/Ocultar letras">
     <i class="fas fa-music"></i>
   </button>
+  
   <!-- Contenedor para notificaciones mejorado -->
   <div class="toast" id="toast">
     <i class="fas fa-heart"></i>
-    <span id="toastMessage">¡Disfruta de nuestra selección musical especial! ❤️</span>
+    <span id="toastMessage">¡Disfruta de este mensaje especial hecho canción! ❤️</span>
   </div>
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Elementos del DOM mejorados
       const iframe = document.getElementById('playerFrame');
       const playBtn = document.getElementById('play');
       const pauseBtn = document.getElementById('pause');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
       const volumeSlider = document.getElementById('volume');
       const volumeIcon = document.getElementById('volumeIcon');
       const progressBar = document.getElementById('progressBar');
       const progressFill = document.getElementById('progressFill');
       const currentTimeEl = document.getElementById('currentTime');
       const durationEl = document.getElementById('duration');
-      const tracks = Array.from(document.querySelectorAll('.track'));
       const loadingSpinner = document.getElementById('loadingSpinner');
       const currentTitleEl = document.getElementById('currentTitle');
       const currentSubtitleEl = document.getElementById('currentSubtitle');
@@ -1558,21 +1498,20 @@
       const toast = document.getElementById('toast');
       const toastMessage = document.getElementById('toastMessage');
       const vizBars = document.querySelectorAll('.viz-bar');
-      // Variables de estado mejoradas
-      let currentTrackIndex = 0;
+      
       let isPlaying = false;
       let playbackTime = 0;
-      let duration = 225; // Duración predeterminada en segundos (3:45)
+      let duration = 252; // Duración en segundos (4:12)
       let lastVolume = 75;
       let isMuted = false;
       let audioVisualizerInterval;
-      // Formatear segundos a MM:SS mejorado
+      
       function formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
       }
-      // Actualizar la barra de progreso mejorado
+      
       function updateProgress() {
         if (duration > 0) {
           const progressPercent = (playbackTime / duration) * 100;
@@ -1581,14 +1520,14 @@
           durationEl.textContent = formatTime(duration);
         }
       }
-      // Actualizar visualizador de audio
+      
       function updateAudioVisualizer() {
         vizBars.forEach(bar => {
           const height = Math.floor(Math.random() * 100) + 1;
           bar.style.height = `${isPlaying ? height : 10}%`;
         });
       }
-      // Mostrar notificación mejorada
+      
       function showToast(message, duration = 3000) {
         toastMessage.textContent = message;
         toast.classList.add('show');
@@ -1596,7 +1535,7 @@
           toast.classList.remove('show');
         }, duration);
       }
-      // Crear partículas de brillo al interactuar
+      
       function createSparkle(x, y) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -1606,7 +1545,7 @@
         sparkle.style.height = sparkle.style.width;
         sparkle.style.background = `rgba(255, 215, 0, ${Math.random() * 0.5 + 0.3})`;
         document.body.appendChild(sparkle);
-        // Animar la partícula
+        
         const animation = sparkle.animate([
           { opacity: 0.8, transform: 'translate(0, 0) scale(0)' },
           { opacity: 0, transform: `translate(${(Math.random() - 0.5) * 40}px, ${-30 - Math.random() * 20}px) scale(1)` }
@@ -1614,118 +1553,10 @@
           duration: 800 + Math.random() * 400,
           easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
         });
+        
         animation.onfinish = () => sparkle.remove();
       }
-      // Cargar track por índice mejorado
-      function loadTrack(index, autoplay = true) {
-        // Validar índice
-        if (index < 0) index = tracks.length - 1;
-        if (index >= tracks.length) index = 0;
-        currentTrackIndex = index;
-        const track = tracks[index];
-        const src = track.dataset.src;
-        // Agregar parámetro origin para resolver error 153
-        const origin = window.location.origin === 'null' ? 'http://localhost' : window.location.origin;
-        const finalSrc = `${src}&origin=${encodeURIComponent(origin)}`;
-        // Actualizar estado de reproducción
-        isPlaying = autoplay;
-        // Actualizar interfaz
-        highlightCurrentTrack();
-        updateNowPlaying();
-        // Mostrar spinner de carga
-        loadingSpinner.classList.add('show');
-        // Actualizar iframe con un pequeño retraso para asegurar la carga
-        setTimeout(() => {
-          iframe.src = finalSrc + (autoplay ? '&autoplay=1' : '');
-        }, 100);
-        // Establecer duración
-        duration = parseDuration(track.dataset.duration);
-        updateProgress();
-        // Ocultar spinner después de un retraso
-        setTimeout(() => {
-          loadingSpinner.classList.remove('show');
-          // Mostrar mensaje de transición
-          showToast(`🎵 Reproduciendo: ${track.dataset.title}`, 2500);
-          // Efecto visual
-          document.querySelectorAll('.pulse-animation').forEach(el => {
-            el.classList.add('pulse-animation');
-            setTimeout(() => el.classList.remove('pulse-animation'), 2000);
-          });
-        }, 1800);
-        // Actualizar letras
-        updateLyrics();
-        // Actualizar visualizador
-        if (audioVisualizerInterval) clearInterval(audioVisualizerInterval);
-        audioVisualizerInterval = setInterval(updateAudioVisualizer, 100);
-      }
-      // Resaltar la pista actual mejorado
-      function highlightCurrentTrack() {
-        tracks.forEach((track, index) => {
-          track.classList.toggle('active', index === currentTrackIndex);
-          if (index === currentTrackIndex) {
-            // Efecto de entrada suave
-            track.style.animation = 'fadeIn 0.5s ease';
-            setTimeout(() => {
-              track.style.animation = '';
-            }, 500);
-          }
-        });
-      }
-      // Actualizar la sección "Now Playing" mejorado
-      function updateNowPlaying() {
-        const currentTrack = tracks[currentTrackIndex];
-        if (currentTrack) {
-          // Efecto typewriter para el título
-          currentTitleEl.textContent = '';
-          currentTitleEl.classList.add('typewriter');
-          const titleText = currentTrack.dataset.title;
-          let i = 0;
-          const typeWriter = setInterval(() => {
-            if (i < titleText.length) {
-              currentTitleEl.textContent += titleText.charAt(i);
-              i++;
-            } else {
-              clearInterval(typeWriter);
-              setTimeout(() => {
-                currentTitleEl.classList.remove('typewriter');
-              }, 1000);
-            }
-          }, 60);
-          // Actualizar subtítulo con fade
-          currentSubtitleEl.style.opacity = '0';
-          setTimeout(() => {
-            currentSubtitleEl.textContent = currentTrack.dataset.subtitle;
-            currentSubtitleEl.style.opacity = '1';
-          }, 300);
-        }
-      }
-      // Parsear duración en formato MM:SS a segundos mejorado
-      function parseDuration(timeStr) {
-        if (!timeStr) return 225; // valor por defecto
-        const parts = timeStr.split(':').map(Number);
-        if (parts.length === 2) {
-          return parts[0] * 60 + parts[1];
-        }
-        return 225;
-      }
-      // Actualizar letras de la canción mejorado
-      function updateLyrics() {
-        const currentTrack = tracks[currentTrackIndex];
-        if (currentTrack) {
-          lyricsTitleEl.textContent = `🎵 ${currentTrack.dataset.title}`;
-          lyricsContentEl.innerHTML = currentTrack.dataset.lyrics
-            .replace(/\
-/g, '<br>')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/--(.*?)--/g, '<em>$1</em>');
-        }
-      }
-      // Habilitar autoplay (solución para navegadores)
-      window.enableAutoplay = function() {
-        iframe.src = iframe.src + '&autoplay=1';
-        showToast('✨ Autoplay habilitado. Disfruta de la música.', 2500);
-      };
-      // Helper para enviar comandos al reproductor YouTube mejorado
+      
       function postCommand(command, args = []) {
         try {
           iframe.contentWindow.postMessage(JSON.stringify({
@@ -1733,7 +1564,7 @@
             func: command,
             args: args
           }), '*');
-          // Efecto visual en botones
+          
           if (command === 'playVideo') {
             playBtn.style.transform = 'scale(0.95)';
             setTimeout(() => playBtn.style.transform = '', 150);
@@ -1746,64 +1577,37 @@
           showToast('⚠️ Error de reproducción. Intenta recargar la página.', 3500);
         }
       }
-      // Simular actualización de tiempo mejorado
+      
       function simulatePlayback() {
         if (isPlaying) {
           playbackTime = Math.min(playbackTime + 1, duration);
           updateProgress();
-          // Actualizar visualizador de audio
+          
           if (Math.random() > 0.7) {
             updateAudioVisualizer();
           }
-          if (playbackTime >= duration - 1) {
-            // Canción terminada, pasar a la siguiente con fade suave
-            setTimeout(() => {
-              let newIndex = currentTrackIndex + 1;
-              if (newIndex >= tracks.length) newIndex = 0;
-              loadTrack(newIndex, true);
-            }, 500);
-          }
         }
       }
-      // Temporizador para simular reproducción
-      setInterval(simulatePlayback, 1000);
-      /* 
-       * ===========================================================
-       * EVENTOS DE INTERACCIÓN MEJORADOS
-       * ===========================================================
-       */
-      // Botones de reproducción mejorados
+      
       playBtn.addEventListener('click', (e) => {
         createSparkle(e.clientX, e.clientY);
         postCommand('playVideo');
         isPlaying = true;
         showToast('▶️ Música en reproducción', 1500);
       });
+      
       pauseBtn.addEventListener('click', (e) => {
         createSparkle(e.clientX, e.clientY);
         postCommand('pauseVideo');
         isPlaying = false;
         showToast('⏸️ Música en pausa', 1500);
       });
-      prevBtn.addEventListener('click', (e) => {
-        createSparkle(e.clientX, e.clientY);
-        let newIndex = currentTrackIndex - 1;
-        loadTrack(newIndex, true);
-        showToast('⏪ Canción anterior', 1500);
-      });
-      nextBtn.addEventListener('click', (e) => {
-        createSparkle(e.clientX, e.clientY);
-        let newIndex = currentTrackIndex + 1;
-        if (newIndex >= tracks.length) newIndex = 0;
-        loadTrack(newIndex, true);
-        showToast('⏩ Siguiente canción', 1500);
-      });
-      // Control de volumen mejorado con mute toggle
+      
       volumeSlider.addEventListener('input', (e) => {
         const volume = parseInt(e.target.value);
         postCommand('setVolume', [volume]);
         lastVolume = volume;
-        // Actualizar icono de volumen
+        
         if (volume === 0) {
           volumeIcon.innerHTML = '<i class="fas fa-volume-mute"></i>';
           volumeIcon.classList.add('active');
@@ -1816,9 +1620,9 @@
           volumeIcon.classList.remove('active');
         }
       });
+      
       volumeIcon.addEventListener('click', () => {
         if (isMuted) {
-          // Restaurar volumen
           volumeSlider.value = lastVolume || 75;
           postCommand('setVolume', [lastVolume || 75]);
           volumeIcon.innerHTML = lastVolume < 30 ? 
@@ -1827,7 +1631,6 @@
           isMuted = false;
           showToast(`🔊 Volumen restaurado: ${lastVolume}%`, 1500);
         } else {
-          // Silenciar
           lastVolume = parseInt(volumeSlider.value);
           volumeSlider.value = 0;
           postCommand('setVolume', [0]);
@@ -1837,20 +1640,23 @@
           showToast('🔇 Volumen silenciado', 1500);
         }
       });
-      // Barra de progreso mejorada con indicador tooltip
+      
       let isDragging = false;
       progressBar.addEventListener('mousedown', (e) => {
         isDragging = true;
         updateProgressBar(e);
       });
+      
       document.addEventListener('mousemove', (e) => {
         if (isDragging) {
           updateProgressBar(e);
         }
       });
+      
       document.addEventListener('mouseup', () => {
         isDragging = false;
       });
+      
       function updateProgressBar(e) {
         if (!isDragging) return;
         const rect = progressBar.getBoundingClientRect();
@@ -1858,7 +1664,7 @@
         const percent = Math.max(0, Math.min(1, clickPosition / rect.width));
         playbackTime = percent * duration;
         updateProgress();
-        // Mostrar tooltip temporal
+        
         if (!document.getElementById('progress-tooltip')) {
           const tooltip = document.createElement('div');
           tooltip.id = 'progress-tooltip';
@@ -1878,47 +1684,13 @@
           }, 1000);
         }
       }
-      // Seleccionar pista de la lista mejorada
-      tracks.forEach((track, index) => {
-        track.addEventListener('click', (e) => {
-          // Efecto de onda al hacer clic
-          const ripple = document.createElement('span');
-          ripple.className = 'ripple';
-          const rect = track.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          const x = e.clientX - rect.left - size / 2;
-          const y = e.clientY - rect.top - size / 2;
-          ripple.style.width = ripple.style.height = `${size}px`;
-          ripple.style.left = `${x}px`;
-          ripple.style.top = `${y}px`;
-          track.appendChild(ripple);
-          setTimeout(() => {
-            ripple.remove();
-          }, 600);
-          // Cargar la pista con un pequeño retraso para asegurar que el iframe está listo
-          setTimeout(() => {
-            loadTrack(index, true);
-          }, 150);
-          createSparkle(e.clientX, e.clientY);
-        });
-        // Efectos hover mejorados
-        track.addEventListener('mouseenter', () => {
-          track.style.boxShadow = '0 8px 25px rgba(255, 77, 141, 0.25)';
-          const thumb = track.querySelector('.thumb');
-          thumb.style.transform = 'scale(1.1) rotate(5deg)';
-        });
-        track.addEventListener('mouseleave', () => {
-          track.style.boxShadow = '';
-          const thumb = track.querySelector('.thumb');
-          thumb.style.transform = '';
-        });
-      });
-      // Botones de letras mejorados
+      
       closeLyricsBtn.addEventListener('click', (e) => {
         createSparkle(e.clientX, e.clientY);
         lyricsContainer.classList.remove('show');
         showToast('📖 Letras ocultas', 1200);
       });
+      
       fabButton.addEventListener('click', (e) => {
         createSparkle(e.clientX, e.clientY);
         if (lyricsContainer.classList.contains('show')) {
@@ -1926,71 +1698,37 @@
           showToast('💫 Letras ocultas', 1200);
         } else {
           lyricsContainer.classList.add('show');
-          updateLyrics();
           showToast('✨ Mostrando letras', 1200);
         }
       });
-      // Doble clic para mostrar letras mejorado
-      tracks.forEach(track => {
-        track.addEventListener('dblclick', (e) => {
-          createSparkle(e.clientX, e.clientY);
-          lyricsContainer.classList.add('show');
-          updateLyrics();
-          showToast('❤️ Letras de la canción', 1500);
-        });
-      });
-      // Inicializar mejorado
-      highlightCurrentTrack();
-      updateNowPlaying();
-      updateLyrics();
+      
+      // Inicializar
       updateAudioVisualizer();
-      // Configurar volumen inicial mejorado
       volumeSlider.value = 75;
       postCommand('setVolume', [75]);
-      // Iniciar visualizador de audio
-      audioVisualizerInterval = setInterval(updateAudioVisualizer, 150);
-      // Mensaje de consola personalizado mejorado
+      setInterval(simulatePlayback, 1000);
+      
+      // Mensaje de consola
       console.log('%c❤️ REPRODUCTOR ROMÁNTICO PERSONALIZADO ❤️', 'color: #ff4d8d; font-size: 26px; font-weight: bold; text-shadow: 0 0 10px rgba(255, 77, 141, 0.7);');
-      console.log('%c✨ Tres canciones especiales creadas solo para ti', 'color: #ffc86a; font-size: 16px; font-weight: 500;');
-      console.log('');
-      console.log('%c1. Dedicada a ella', 'color: #ff9ec5; font-weight: bold;');
-      console.log('   A la chica más linda, la que merece cada verso y cada suspiro.');
-      console.log('');
-      console.log('%c2. Mensaje sobre nosotros', 'color: #a0d8f0; font-weight: bold;');
-      console.log('   Un mensaje mío, sincero: lo que pensé de los dos hecho canción.');
-      console.log('');
-      console.log('%c3. Para sentirme cómodo (canción antigua)', 'color: #d4a6b1; font-weight: bold;');
-      console.log('   Una canción antigua para perderse, cómoda y cálida como un hogar.');
+      console.log('%c✨ Canción especial: "Mensaje sobre nosotros"', 'color: #ffc86a; font-size: 16px; font-weight: 500;');
       console.log('');
       console.log('%c🌟 Instrucciones de uso:', 'color: #88d0e0; font-weight: bold; text-decoration: underline;');
-      console.log('- Doble clic en cualquier canción para ver su letra completa');
-      console.log('- Usa los controles para navegar entre canciones');
-      console.log('- Ajusta el volumen con el control deslizante o haz clic en el icono');
-      console.log('- Presiona el botón flotante (♫) para mostrar/ocultar letras');
+      console.log('- Presiona el botón "Reproducir" para comenzar');
+      console.log('- Usa el botón "Pausar" para detener la música');
+      console.log('- Ajusta el volumen con el control deslizante');
+      console.log('- Presiona el botón flotante (♫) para ver las letras');
       console.log('');
       console.log('%c💖 Este reproductor fue creado con mucho amor para ti', 'color: #ff4d8d; font-weight: bold; background: rgba(30, 10, 40, 0.7); padding: 8px; border-radius: 8px;');
-      // Efecto de fade-in mejorado para los elementos
-      document.querySelectorAll('.track, .controls, .progress-container, .audio-visualizer').forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(25px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        setTimeout(() => {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }, 400 + index * 180);
-      });
-      // Mostrar notificación inicial mejorada
+      
+      // Mostrar notificación inicial
       setTimeout(() => {
-        showToast('✨ ¡Bienvenido! Selecciona una canción para comenzar esta experiencia romántica ❤️', 4000);
+        showToast('✨ ¡Bienvenido! Disfruta de este mensaje especial hecho canción ❤️', 4000);
       }, 1000);
+      
       // Efecto de animación en el título principal
       setTimeout(() => {
         document.querySelector('h1').style.animation = 'glow 3s ease-in-out infinite alternate, breathe 8s infinite';
       }, 500);
-      // Limpiar intervalos al cerrar la página
-      window.addEventListener('beforeunload', () => {
-        if (audioVisualizerInterval) clearInterval(audioVisualizerInterval);
-      });
     });
   </script>
 </body>
